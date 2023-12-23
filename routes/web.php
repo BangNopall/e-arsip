@@ -34,6 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/suratkeluar', [DashboardController::class, 'suratkeluar'] )->name('dashboard.suratkeluar');
     Route::view('/suratregisterkeluar', [DashboardController::class, 'suratregisterkeluar'] )->name('dashboard.suratregisterkeluar');
     Route::view('/bukuagenda', [DashboardController::class, 'bukuagenda'] )->name('dashboard.bukuagenda');
+    Route::view('/tambahsuratmasuk', [DashboardController::class, 'tambahsuratmasuk'] )->name('dashboard.tambahsuratmasuk');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'] )->name('logout');
