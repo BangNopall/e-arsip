@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/surat-masuk/add', [DashboardController::class, 'addSuratMasuk'] )->name('dashboard.surat-masuk.add');
     Route::post('/surat-masuk/add', [DashboardController::class, 'storeSuratMasuk'] )->name('dashboard.surat-masuk.store');
     Route::get('/disposisi/add', [DashboardController::class, 'addDisposisi'] )->name('dashboard.disposisi.add');
+    Route::view('/suratkeluar', [DashboardController::class, 'suratkeluar'] )->name('dashboard.suratkeluar');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'] )->name('logout');
