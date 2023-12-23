@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// ROUTE DEVELOP UI
+Route::get('/suratkeluar', function () {
+    return view('suratkeluar');
+});
+
+
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
         return redirect('/login');
@@ -30,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/surat-masuk', [DashboardController::class, 'suratMasuk'] )->name('dashboard.surat-masuk');
     Route::get('/surat-masuk/add', [DashboardController::class, 'addSuratMasuk'] )->name('dashboard.surat-masuk.add');
     Route::post('/surat-masuk/add', [DashboardController::class, 'storeSuratMasuk'] )->name('dashboard.surat-masuk.store');
+    Route::get('/surat-masuk/edit/{id}', [DashboardController::class, 'editSuratMasuk'] )->name('dashboard.surat-masuk.edit');
     Route::get('/disposisi/add', [DashboardController::class, 'addDisposisi'] )->name('dashboard.disposisi.add');
 });
 

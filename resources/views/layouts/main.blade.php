@@ -23,5 +23,16 @@
     </div>
     {{-- end main content --}}
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var sidebar = document.getElementById('mySidebar');
+
+        window.addEventListener('scroll', function() {
+            var shouldFix = window.scrollY > 0;
+
+            sidebar.style.position = shouldFix ? 'sticky' : 'static';
+        });
+    });
+</script>
 
 </html>

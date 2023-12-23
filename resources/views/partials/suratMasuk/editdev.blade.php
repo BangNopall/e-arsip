@@ -21,15 +21,23 @@
     <div class="flex flex-col px-4 py-6">
         <div class="flex items-center justify-between mb-4">
             <!-- Judul Data Surat Masuk -->
-            <h2 class="text-stone-900 font-medium text-xl tracking-wide">Tambah Data Surat Masuk</h2>
+            <h2 class="text-stone-900 font-medium text-xl tracking-wide">Edit Data Surat Masuk</h2>
         </div>
         <!-- Kolom Nama -->
         <form action="{{ route('dashboard.surat-masuk.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
+                <label for="perihal" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Perihal</label>
+                <input type="text" placeholder="Masukkan perihal" id="perihal" name="perihal" value="{{ $suratmasuk->perihal }}"
+                    class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
+                @error('perihal')
+                    <div class="text-red-500 text-left">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-4">
                 <label for="nama_pengirim" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                     Pengirim</label>
-                <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim"
+                <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim" value="{{ $suratmasuk->nama_pengirim }}"
                     class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                 @error('nama_pengirim')
                     <div class="text-red-500 text-left">{{ $message }}</div>
@@ -40,7 +48,7 @@
             <div class="mb-4">
                 <label for="nomor_registrasi" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nomor
                     Register</label>
-                <input type="text" placeholder="Masukkan nomor register" id="nomorRegister" name="nomor_registrasi"
+                <input type="text" placeholder="Masukkan nomor register" id="nomorRegister" name="nomor_registrasi" value="{{ $suratmasuk->nomor_registrasi }}"
                     class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                 @error('nomor_registrasi')
                     <div class="text-red-500 text-left">{{ $message }}</div>
@@ -55,7 +63,7 @@
                         Surat</label>
                     <div
                         class="relative border-2 border-gray-400 rounded-md h-9 w-80 flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
-                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalSurat" name="tanggal_surat"
+                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalSurat" name="tanggal_surat" value="{{ $suratmasuk->tanggal_surat }}"
                             class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
                     </div>
                     @error('tanggal_surat')
@@ -69,7 +77,7 @@
                         Diterima</label>
                     <div
                         class="relative border-2 border-gray-400 rounded-md h-9 w-80 flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
-                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalDiterima" name="tanggal_diterima"
+                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalDiterima" name="tanggal_diterima" value="{{ $suratmasuk->tanggal_terima }}"
                             class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
                     </div>
                     @error('tanggal_diterima')
@@ -80,7 +88,7 @@
                 <!-- Lampiran -->
                 <div class="flex flex-col">
                     <label for="lampiran" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Lampiran</label>
-                    <input type="number" placeholder="Jumlah lampiran" id="lampiran" name="lampiran"
+                    <input type="number" placeholder="Jumlah lampiran" id="lampiran" name="lampiran" value="{{ $suratmasuk->lampiran }}"
                         class="w-72 h-9 border-2 border-gray-400 rounded-md px-3 mb-2 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                     @error('lampiran')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -91,7 +99,7 @@
             <div class="mb-4">
                 <label for="alamat_asal" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Alamat
                     Asal</label>
-                <input type="text" placeholder="Masukkan alamat asal" id="alamatAsal" name="alamat_asal"
+                <input type="text" placeholder="Masukkan alamat asal" id="alamatAsal" name="alamat_asal" value="{{ $suratmasuk->alamat_asal }}"
                     class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                 @error('alamat_asal')
                     <div class="text-red-500 text-left">{{ $message }}</div>
@@ -102,7 +110,7 @@
             <div class="mb-6">
                 <label for="alamat_sekarang" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Alamat
                     Sekarang</label>
-                <input type="text" placeholder="Masukkan alamat sekarang" id="alamatSekarang" name="alamat_sekarang"
+                <input type="text" placeholder="Masukkan alamat sekarang" id="alamatSekarang" name="alamat_sekarang" value="{{ $suratmasuk->alamat_sekarang }}"
                     class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                 @error('alamat_sekarang')
                     <div class="text-red-500 text-left">{{ $message }}</div>
@@ -120,7 +128,7 @@
             <div class="mb-4">
                 <label for="nama_penerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                     Penerima</label>
-                <input type="text" placeholder="Masukkan nama penerima" id="penerima" name="nama_penerima"
+                <input type="text" placeholder="Masukkan nama penerima" id="penerima" name="nama_penerima" value="{{ $suratmasuk->nama_penerima }}"
                     class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
                 @error('nama_penerima')
                     <div class="text-red-500 text-left">{{ $message }}</div>
@@ -128,7 +136,9 @@
             </div>
             <!-- Kolom centang "Simpan sebagai agenda rapat" -->
             <div class="flex items-center mb-4">
-                <input type="checkbox" id="simpanAgenda" name="simpanAgenda" class="form-checkbox h-4 w-4 text-blue-500">
+                <input type="checkbox" id="simpanAgenda" name="simpanAgenda" class="form-checkbox h-4 w-4 text-blue-500" @if ($suratmasuk->is_rapat == 1)
+                    checked
+                @endif>
                 <label for="simpanAgenda" class="ml-2 text-sm text-stone-900 tracking-wide">Simpan sebagai agenda
                     rapat</label>
             </div>

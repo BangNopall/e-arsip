@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('surat_masuks', function (Blueprint $table) {
             $table->id();
+            $table->string('perihal');
             $table->string('nama_pengirim');
             $table->string('no_registrasi');
             $table->date('tanggal_surat');

@@ -11,19 +11,22 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('dashboard');
+        return view('dashboarddev');
     }
     public function suratMasuk()
     {
-        return view('suratmasuk');
+        // Mengambil semua data surat masuk
+        $suratmasuk = suratMasuk::all();
+        return view('suratmasukdev', compact('suratmasuk'));
     }
     public function addSuratMasuk()
     {
-        return view('partials.suratMasuk.add');
+        return view('partials.suratMasuk.adddev');
     }
     public function storeSuratMasuk(Request $request)
     {
         $validatedData = $request->validate([
+            'perihal' => 'required',
             'nama_pengirim' => 'required',
             'nomor_registrasi' => 'required|numeric',
             'tanggal_surat' => 'required',
@@ -43,6 +46,7 @@ class DashboardController extends Controller
         }
 
         $suratMasuk = new suratMasuk();
+        $suratMasuk->perihal = $validatedData['perihal'];
         $suratMasuk->nama_pengirim = $validatedData['nama_pengirim'];
         $suratMasuk->no_registrasi = $validatedData['nomor_registrasi'];
         $suratMasuk->tanggal_surat = $validatedData['tanggal_surat'];
@@ -70,9 +74,14 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard.surat-masuk')->with('success', 'Surat Masuk Berhasil Ditambahkan');
     }
+    public function editSuratMasuk($id)
+    {
+        $suratmasuk = suratMasuk::find($id);
+        return view('partials.suratMasuk.editdev', compact('suratmasuk'));
+    }
 
     public function addDisposisi()
     {
-        return view('partials.disposisi.add');
+        return view('partials.disposisi.adddev');
     }
 }
