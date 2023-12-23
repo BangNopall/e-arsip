@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ROUTE DEVELOP UI
-Route::get('/suratkeluar', function () {
-    return view('suratkeluar');
-});
+Route::view('/suratmasukui', 'suratmasuk')->name('test');
 
 
 Route::middleware(['guest'])->group(function () {
