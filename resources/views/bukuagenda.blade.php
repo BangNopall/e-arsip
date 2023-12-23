@@ -1,65 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Round">
-    <title>Sip Arsip - Data Surat Register Keluar</title>
-</head>
-
-<body class="bg-gray-50 flex overflow-y-auto">
-    <!-- Sidebar -->
-    <div id="mySidebar" class="bg-gray-50 w-64 py-4 px-6 flex flex-col items-center border-r top-0 h-screen">
-        <!-- Logo -->
-        <div class="mb-6">
-            <img class="mx-auto mt-2 mb-1 w-24 h-auto" src="Images/Sip Arsip.svg" alt="Logo">
-        </div>
-
-        <!-- Photo Profile -->
-        <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="Images/Foto Profil.jpg" alt="Profile Image">
-
-        <!-- Nama Pengguna -->
-        <div class="text-stone-900 text-lg font-medium font-Poppins tracking-wide mt-1">Agus Salim, S.Sos., M.M</div>
-
-        <!-- Nama Jabatan -->
-        <div class="text-gray-500 text-sm font-normal font-Poppins tracking-wide leading-3">Manajer Senior</div>
-
-        <!-- Navigation -->
-        <nav class="mt-9">
-            <a href="dashboard.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px;">dashboard</i>Dashboard
-            </a>
-            <a href="suratmasuk.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">mail</i>Surat Masuk
-            </a>
-            <a href="suratkeluar.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">send</i>Surat Keluar
-            </a>
-            <a href="registerkeluar.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">assignment</i>Surat Register Keluar
-            </a>
-            <a href="bukuagenda.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-20 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">event_note</i>Buku Agenda
-            </a>
-            <a href="editprofile.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">person</i>Edit Profil
-            </a>
-            <a href="login.html" class="flex items-center block py-0.5 px-1 text-sm font-medium text-gray-500 tracking-wide rounded-md mb-2 hover:text-gray-700 focus:text-blue-500 transition duration-300 ease-in-out">
-                <i class="material-icons-round mr-4" style="font-size: 20px">exit_to_app</i>Keluar
-            </a>
-        </nav>
-          
-    </div>
-
+@extends('layouts.main')
+@section('container')
     <!-- Main Content -->
-    <div id="myMaincontent" class="flex-1 flex flex-col overflow-hidden font-Poppins relative mt-2 mx-2">
+    <div id="myMaincontent" class="flex-1 flex flex-col overflow-hidden font-Poppins relative">
         <!-- Top Bar -->
         <header class="bg-gray-50">
             <div class="container flex items-center justify-between px-4 py-2">
+                <div id="openSidebarBtn" class="sm:hidden md:hidden absolute top-4 left-4 cursor-pointer" onclick="openSidebar()">
+                    <i class="material-icons-round text-gray-500 hover:text-gray-800 transition duration-300 ease-in-out" style="font-size: 26px;">sort</i>
+                </div>
+                <div id="closeSidebarBtn" class="sm:hidden md:hidden absolute top-4 right-44 cursor-pointer hidden" onclick="closeSidebar()">
+                <i class="material-icons-round text-gray-500 hover:text-gray-800 transition duration-300 ease-in-out" style="font-size: 26px;">close</i>
+                </div>
                 <!-- Selamat Beraktivitas dan Tanggal -->
-                <div class="flex items-center text-left mb-1">
+                <div class="flex items-center text-left mb-1 hidden lg:flex">
+                    <div>
+                        <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
+                    </div>               
+                </div>
+                <!-- Selamat Beraktivitas dan Tanggal manipulasi -->
+                <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
                         <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
@@ -67,13 +27,13 @@
                 </div>
 
                 <!-- Foto Profil Kecil -->
-                <div class="flex items-center">
-                    <img src="Images/Foto Profil.jpg" alt="Foto Profil" class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                <div class="flex items-center hidden sm:hidden md:hidden lg:flex">
+                    <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil" class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
                 </div>
             </div>
         </header>
         <!-- Data Buku Agenda -->
-        <div class="flex flex-col px-4 py-4">
+        <div class="flex flex-col px-4 py-6">
             <div class="flex items-center justify-between mb-4">
                 <!-- Judul Data Surat Keluar -->
                 <h2 class="text-stone-900 font-medium text-xl tracking-wide">Data Buku Agenda</h2>
@@ -139,63 +99,80 @@
             </div>
 
             <!-- Rekap Buku Agenda -->
-            <div class="mt-8 mb-0.5 text-base tracking-wide font-medium text-stone-900">Rekap Buku Agenda</div>
-            <!-- Tanggal Awal dan Tanggal Akhir-->
-            <div class="flex flex-row">
-                <!-- Tanggal Awal -->
-                <div class="flex flex-col mr-4">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
-                    <div class="relative border-2 border-gray-400 rounded-md h-8 w-64 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input
-                            type="text"
-                            placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tanggal Akhir -->
-                <div class="flex flex-col mr-4">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
-                    <div class="relative border-2 border-gray-400 rounded-md h-8 w-64 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input
-                            type="text"
-                            placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-8 mb-1 text-base tracking-wide font-medium text-stone-900">Rekap Buku Agenda</div>
+<!-- Tanggal Awal dan Tanggal Akhir untuk mode layar handphone dan tablet -->
+<div class="flex flex-col md:hidden">
+    <!-- Tanggal Awal -->
+    <div class="flex flex-col mb-3">
+        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
+        <div class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+            <input
+                type="text"
+                placeholder="dd/mm/yyyy"
+                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
             </div>
-                <!-- Tombol Cetak Buku Agenda -->
-                <div class="flex justify-start mt-2 mb-44 items-center">
-                    <button class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
-                        Cetak Buku Agenda
-                    </button>
-                </div>                        
-            <!-- Footer -->
-            <footer class="text-stone-900 text-sm text-left">
-                &copy; 2023 Sip Arsip. All rights reserved.
-            </footer>
         </div>
     </div>
 
-<!-- JavaScript -->
+    <!-- Tanggal Akhir -->
+    <div class="flex flex-col mb-3">
+        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
+        <div class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+            <input
+                type="text"
+                placeholder="dd/mm/yyyy"
+                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var sidebar = document.getElementById('mySidebar');
+<!-- Tanggal Awal dan Tanggal Akhir untuk mode layar desktop -->
+<div class="hidden md:flex flex-row">
+    <!-- Tanggal Awal -->
+    <div class="flex flex-col mb-3">
+        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
+        <div class="relative border-2 border-gray-400 rounded-md h-8 w-72 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+            <input
+                type="text"
+                placeholder="dd/mm/yyyy"
+                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
+            </div>
+        </div>
+    </div>
 
-        window.addEventListener('scroll', function () {
-            var shouldFix = window.scrollY > 0;
-            
-            sidebar.style.position = shouldFix ? 'sticky' : 'static';
-        });
-    });
-</script>    
-</body>
+    <!-- Tanggal Akhir -->
+    <div class="flex flex-col ml-4">
+        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
+        <div class="relative border-2 border-gray-400 rounded-md h-8 w-72 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+            <input
+                type="text"
+                placeholder="dd/mm/yyyy"
+                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow"/>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
+            </div>
+        </div>
+    </div>
+</div>
 
-</html>
+            <!-- Tombol Cetak Buku Agenda -->
+            <div class="flex justify-start mb-44 items-center">
+                <button class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
+                    Cetak Buku Agenda
+                </button>
+            </div>                        
+        </div>
+        <!-- Footer -->
+        <footer class="text-stone-900 text-sm text-left ml-4 mb-5 mt-auto w-full bg-gray-50">
+            &copy; 2023 Sip Arsip. All rights reserved.
+        </footer>
+    </div>
+    <script src="{{asset('js/bukuagenda.js')}}"></script>
+@endsection
