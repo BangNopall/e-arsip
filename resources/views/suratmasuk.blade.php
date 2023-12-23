@@ -80,14 +80,14 @@
                             <td class="py-2 px-2 text-center" style="display: flex; align-items: center; justify-content: center;">
                                 <a href="#" class="text-white bg-blue-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5 mr-2">Edit</a>
                                 <a href="#" class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</a>
-                            </td> 
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <!-- Tombol Tambah Data -->
-            <div class="flex justify-start mt-4 mb-48 items-center">
+            <div class="flex justify-start mt-5 mb-48 items-center">
                 <a href="inputsuratmasuk.html"><button class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
                     Tambah Data
                 </button></a>
