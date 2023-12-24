@@ -31,10 +31,14 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'] )->name('dashboard');
+    // SuratMasuk
     Route::get('/surat-masuk', [DashboardController::class, 'suratMasuk'] )->name('dashboard.surat-masuk');
     Route::get('/surat-masuk/add', [DashboardController::class, 'addSuratMasuk'] )->name('dashboard.surat-masuk.add');
     Route::post('/surat-masuk/add', [DashboardController::class, 'storeSuratMasuk'] )->name('dashboard.surat-masuk.store');
     Route::get('/surat-masuk/edit/{id}', [DashboardController::class, 'editSuratMasuk'] )->name('dashboard.surat-masuk.edit');
+    Route::post('/surat-masuk/edit/{id}', [DashboardController::class, 'updateSuratMasuk'] )->name('dashboard.surat-masuk.update');
+    Route::delete('/surat-masuk/delete/{id}', [DashboardController::class, 'deleteSuratMasuk'] )->name('dashboard.surat-masuk.delete');
+    
     Route::get('/disposisi/add', [DashboardController::class, 'addDisposisi'] )->name('dashboard.disposisi.add');
     Route::view('/suratkeluar', [DashboardController::class, 'suratkeluar'] )->name('dashboard.suratkeluar');
     Route::view('/suratregisterkeluar', [DashboardController::class, 'suratregisterkeluar'] )->name('dashboard.suratregisterkeluar');

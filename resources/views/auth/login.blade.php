@@ -79,7 +79,7 @@
 
             <!-- Ingat Saya -->
             <div class="flex items-center justify-start mb-4">
-                <input type="checkbox" id="remember" name="remember" class="w-3 h-3 mr-1 rounded-md border-gray-300">
+                <input type="checkbox" id="remember" name="remember" class="w-3 h-3 mr-1 border-gray-300">
                 <label for="remember" class="text-stone-900 text-sm ml-0.5 tracking-wide">Ingat saya</label>
             </div>
 

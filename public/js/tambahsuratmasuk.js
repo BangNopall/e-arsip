@@ -75,3 +75,21 @@ function closeSidebar() {
     openBtn.classList.remove('hidden');
     body.style.overflow = 'auto';
 }
+
+
+// Mendapatkan elemen input dan div pratinjau
+const fileInput = document.getElementById('multiple_files');
+const fileNamesDiv = document.getElementById('fileNames');
+
+// Menangani peristiwa pemilihan dokumen
+fileInput.addEventListener('change', function() {
+    // Menghapus pratinjau nama dokumen sebelumnya
+    fileNamesDiv.innerHTML = '';
+
+    // Menampilkan nama dokumen yang dipilih
+    for (const file of fileInput.files) {
+        const fileNameDiv = document.createElement('div');
+        fileNameDiv.textContent = file.name;
+        fileNamesDiv.appendChild(fileNameDiv);
+    }
+});
