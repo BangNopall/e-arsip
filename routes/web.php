@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/tambahsuratkeluar', [DashboardController::class, 'tambahsuratkeluar'] )->name('dashboard.tambahsuratmasuk');
+Route::view('/tambahregisterkeluar', [DashboardController::class, 'tambahregisterkeluar'] )->name('dashboard.tambahregistermasuk');
 
 
 Route::middleware(['guest'])->group(function () {
