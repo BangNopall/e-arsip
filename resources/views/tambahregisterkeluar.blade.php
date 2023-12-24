@@ -107,7 +107,7 @@
             <!-- Tombol Simpan -->
             <div class="flex items-center mb-20">
                 <!-- Tombol Simpan -->
-                <button class="w-40 h-9 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-3 text-sm font-normal tracking-wide transition focus:border-gray-800 focus:outline-none mr-4">
+                <button class="w-40 h-9 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-3 mb-8 text-sm font-normal tracking-wide transition focus:border-gray-800 focus:outline-none mr-4">
                     Simpan
                 </button>
             </div>        

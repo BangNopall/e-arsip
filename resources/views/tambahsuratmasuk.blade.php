@@ -37,22 +37,6 @@
             <div class="flex items-center justify-between mb-4">
                 <!-- Judul Data Surat Masuk -->
                 <h2 class="text-stone-900 font-medium text-xl tracking-wide">Tambah Data Surat Masuk</h2>
-
-                <!-- Container untuk Kolom Pencarian -->
-                <div class="flex items-center w-96 h-9 border-2 border-gray-400 rounded-md bg-transparent focus-within:border-gray-800 transition duration-300">
-                    <!-- Logo Search dari Google Icons Rounded -->
-                    <div class="flex items-center justify-center w-10 h-9">
-                        <i class="material-icons-round text-gray-400 cursor-pointer" style="font-size: 20px;">search</i>
-                    </div>
-
-                    <!-- Kolom Pencarian -->
-                    <input type="text" placeholder="Cari surat masuk" class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
-
-                    <!-- Logo Filter dari Google Icons Rounded -->
-                    <div class="flex items-center justify-center w-10 h-9">
-                        <i class="material-icons-round text-gray-400 cursor-pointer" style="font-size: 20px;">tune</i>
-                    </div>
-                </div>
             </div>
             <!-- Kolom Nama -->
             <div class="mb-4">
