@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::view('/tambahsuratkeluar', [DashboardController::class, 'tambahsuratkeluar'] )->name('dashboard.tambahsuratmasuk');
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
