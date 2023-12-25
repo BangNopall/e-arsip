@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::view('/tambahsuratkeluar', [DashboardController::class, 'tambahsuratkeluar'] )->name('dashboard.tambahsuratmasuk');
+Route::view('/tambahregisterkeluar', [DashboardController::class, 'tambahregisterkeluar'] )->name('dashboard.tambahregistermasuk');
+Route::view('/tambahdisposisi', [DashboardController::class, 'tambahdisposisi'] )->name('dashboard.tambahdisposisi');
+Route::view('/editprofile', [DashboardController::class, 'editprofile'] )->name('dashboard.editprofile');
 
 // ROUTE DEVELOP UI
 Route::view('/suratmasukui', 'suratmasuk')->name('test');
