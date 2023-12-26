@@ -38,6 +38,7 @@ class AuthController extends Controller
     public function store(Request $request){
         $validatedData = $request->validate([
             'nik' => 'required|min:16',
+            'jabatan' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users,email|email:dns',
             'nohp' => 'required|min:8',
@@ -57,6 +58,7 @@ class AuthController extends Controller
 
         $user = new User();
         $user->nik = $validatedData['nik'];
+        $user->jabatan = $validatedData['jabatan'];
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->nohp = $validatedData['nohp'];

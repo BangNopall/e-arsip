@@ -176,10 +176,10 @@
                         Simpan
                     </button>
                     <a href="/disposisi/add">
-                        <button
+                        <div
                             class="w-40 h-9 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-3 text-sm font-normal tracking-wide transition focus:border-gray-800 focus:outline-none flex justify-center items-center">
                             Disposisi
-                        </button>
+                        </div>
                     </a>
                 </div>
             </form>

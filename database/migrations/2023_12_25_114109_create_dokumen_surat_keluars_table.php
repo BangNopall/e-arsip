@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('dokumen_surat_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('nik')->unique();
-            $table->string('jabatan');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('nohp')->unique();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('surat_keluar_id');
+            $table->string('nama_file');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('dokumen_surat_keluars');
     }
 };

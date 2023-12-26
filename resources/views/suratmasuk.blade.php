@@ -48,40 +48,40 @@
                     <!-- Kolom Pencarian -->
                     <form action="/surat-masuk" method="get">
                         <input type="text" placeholder="Cari surat masuk" name="search"
-                        class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
+                            class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
                     </form>
                 </div>
             </div>
             @if (session()->has('success'))
-                    <div id="alert-border-3"
-                        class="rounded flex items-center p-3 mb-2 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400"
-                        role="alert">
-                        <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                        </svg>
-                        <div class="ms-3 text-sm font-medium">
-                            {{ session('success') }}
-                        </div>
+                <div id="alert-border-3"
+                    class="rounded flex items-center p-3 mb-2 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ session('success') }}
                     </div>
-                @endif
-                @if (session()->has('error'))
-                    <div id="alert-border-2"
-                        class="rounded flex items-center p-3 mb-2 text-red-800 border-t-4 border-red-300 bg-red-50"
-                        role="alert">
-                        <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                        </svg>
-                        <div class="ms-3 text-sm font-medium">
-                            {{ session('error') }}
-                        </div>
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div id="alert-border-2"
+                    class="rounded flex items-center p-3 mb-2 text-red-800 border-t-4 border-red-300 bg-red-50"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ session('error') }}
                     </div>
-                @endif
+                </div>
+            @endif
             <!-- Tabel -->
-            <div class="overflow-x-auto overflow-y-auto mt-2 max-w-full max-h-96">
+            <div class="overflow-x-auto mt-2 max-w-full max-h-96">
                 <table class="min-w-full min-w-max border">
                     <thead class="bg-blue-500 text-white tracking-wide border font-normal">
                         <tr>
@@ -116,7 +116,8 @@
                                         method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</button>
+                                        <button
+                                            class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</button>
                                     </form>
                                 </td>
                             </tr>

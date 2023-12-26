@@ -47,16 +47,40 @@
                     </div>
 
                     <!-- Kolom Pencarian -->
-                    <input type="text" placeholder="Cari surat register keluar"
+                    <form action="/surat-register-keluar" method="get">
+                        <input type="text" placeholder="Cari surat register keluar" name="search"
                         class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
-
-                    <!-- Logo Filter dari Google Icons Rounded -->
-                    <div class="flex items-center justify-center w-10 h-9">
-                        <i class="material-icons-round text-gray-400 cursor-pointer" style="font-size: 20px;">tune</i>
-                    </div>
+                    </form>
                 </div>
             </div>
-
+            @if (session()->has('success'))
+                <div id="alert-border-3"
+                    class="rounded flex items-center p-3 mb-2 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ session('success') }}
+                    </div>
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div id="alert-border-2"
+                    class="rounded flex items-center p-3 mb-2 text-red-800 border-t-4 border-red-300 bg-red-50"
+                    role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <div class="ms-3 text-sm font-medium">
+                        {{ session('error') }}
+                    </div>
+                </div>
+            @endif
             <!-- Tabel -->
             <div class="overflow-x-auto overflow-y-auto mt-2 max-w-full max-h-96">
                 <table class="min-w-full min-w-max border">
@@ -77,33 +101,43 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 border text-sm">
+                        @foreach ($suratregisterkeluar as $index => $d)
                         <tr>
-                            <td class="py-2 px-2 border text-center">1</td>
-                            <td class="py-2 px-4 border text-center">Muhammad Daga Perkasa</td>
-                            <td class="py-2 px-4 border text-center">3507222904020002</td>
-                            <td class="py-2 px-4 border text-center">29 April 2002</td>
-                            <td class="py-2 px-4 border text-center">Belum Kawin</td>
-                            <td class="py-2 px-4 border text-center">L</td>
-                            <td class="py-2 px-4 border text-center">Mahasiswa</td>
-                            <td class="py-2 px-4 border text-center">RT 07</td>
-                            <td class="py-2 px-4 border text-center">-</td>
-                            <td class="py-2 px-4 border text-center">14/11/2023</td>
-                            <td class="py-2 px-4 border text-center">Pengajuan Proposal Bersih Desa</td>
+                            <td class="py-2 px-2 border text-center">{{ $index + 1 }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->nama_lengkap }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->nik }}</td>
+                            <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_lahir)) }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->status }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->jenis_kelamin }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->pekerjaan }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->alamat_asal }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->alamat_pindah }}</td>
+                            <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_surat)) }}</td>
+                            <td class="py-2 px-4 border text-center">{{ $d->keterangan }}</td>
                             <td class="py-2 px-2 text-center"
                                 style="display: flex; align-items: center; justify-content: center;">
-                                <a href="#"
-                                    class="text-white bg-blue-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5 mr-2">Edit</a>
-                                <a href="#"
-                                    class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</a>
+                                <form action="{{ route('dashboard.surat-register-keluar.edit', ['id' => $d->id]) }}"
+                                    method="GET">
+                                    <button type="submit"
+                                        class="text-white bg-blue-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5 mr-2">Edit</button>
+                                </form>
+                                <form action="{{ route('dashboard.surat-register-keluar.delete', ['id' => $d->id]) }}"
+                                    method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button
+                                        class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</button>
+                                </form>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
             <!-- Tombol Tambah Data -->
             <div class="flex justify-start mt-5 mb-48 items-center">
-                <a href="inputsuratkeluar.html"><button
+                <a href="/surat-register-keluar/add"><button
                         class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
                         Tambah Data
                     </button></a>

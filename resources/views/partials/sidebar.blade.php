@@ -39,11 +39,11 @@
                 <i class="material-icons-round mr-4" style="font-size: 20px">event_note</i>Buku Agenda
             </a>
             <a href="/edit-profil"
-                class="{{ Request::is('edit-profil') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center block py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
+                class="{{ Request::is('edit-profil') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center flex py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
                 <i class="material-icons-round mr-4" style="font-size: 20px">person</i>Edit Profil
             </a>
             <a href="/logout"
-                class="{{ Request::is('logout') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center block py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
+                class="{{ Request::is('logout') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center flex py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
                 <i class="material-icons-round mr-4" style="font-size: 20px">exit_to_app</i>Keluar
             </a>
         </nav>

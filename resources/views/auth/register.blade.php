@@ -65,6 +65,14 @@
             @error('name')
                 <div class="text-red-500 text-left">{{ $message }}</div>
             @enderror
+            
+            <label for="jabatan" class="block text-left text-stone-900 text-sm font-medium tracking-wide mb-0.5">Jabatan</label>
+            <input type="text" id="jabatan" name="jabatan"
+                class="w-96 h-9 border-2 border-gray-300 rounded-md px-3 text-sm mb-1 text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                required>
+            @error('jabatan')
+                <div class="text-red-500 text-left">{{ $message }}</div>
+            @enderror
 
             <!-- NIK -->
             <label for="nik"

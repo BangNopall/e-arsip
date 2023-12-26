@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::view('/tambahsuratkeluar', [DashboardController::class, 'tambahsuratkeluar'] )->name('dashboard.tambahsuratmasuk');
 Route::view('/tambahregisterkeluar', [DashboardController::class, 'tambahregisterkeluar'] )->name('dashboard.tambahregistermasuk');
-Route::view('/tambahdisposisi', [DashboardController::class, 'tambahdisposisi'] )->name('dashboard.tambahdisposisi');
 Route::view('/editprofile', [DashboardController::class, 'editprofile'] )->name('dashboard.editprofile');
 
 // ROUTE DEVELOP UI
@@ -34,7 +32,9 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    // Home
     Route::get('/dashboard', [DashboardController::class, 'dashboard'] )->name('dashboard');
+    Route::get('/edit-profil', [DashboardController::class, 'editProfil'] )->name('dashboard.edit-profil');
     // SuratMasuk
     Route::get('/surat-masuk', [DashboardController::class, 'suratMasuk'] )->name('dashboard.surat-masuk');
     Route::get('/surat-masuk/add', [DashboardController::class, 'addSuratMasuk'] )->name('dashboard.surat-masuk.add');
@@ -42,12 +42,23 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/surat-masuk/edit/{id}', [DashboardController::class, 'editSuratMasuk'] )->name('dashboard.surat-masuk.edit');
     Route::post('/surat-masuk/edit/{id}', [DashboardController::class, 'updateSuratMasuk'] )->name('dashboard.surat-masuk.update');
     Route::delete('/surat-masuk/delete/{id}', [DashboardController::class, 'deleteSuratMasuk'] )->name('dashboard.surat-masuk.delete');
-    
+    // Disposisi
     Route::get('/disposisi/add', [DashboardController::class, 'addDisposisi'] )->name('dashboard.disposisi.add');
-    Route::view('/suratkeluar', [DashboardController::class, 'suratkeluar'] )->name('dashboard.suratkeluar');
-    Route::view('/suratregisterkeluar', [DashboardController::class, 'suratregisterkeluar'] )->name('dashboard.suratregisterkeluar');
-    Route::view('/bukuagenda', [DashboardController::class, 'bukuagenda'] )->name('dashboard.bukuagenda');
-    Route::view('/tambahsuratmasuk', [DashboardController::class, 'tambahsuratmasuk'] )->name('dashboard.tambahsuratmasuk');
+    Route::post('/disposisi/add', [DashboardController::class, 'storeDisposisi'] )->name('dashboard.disposisi.store');
+    // SuratKeluar
+    Route::get('/surat-keluar', [DashboardController::class, 'suratKeluar'] )->name('dashboard.surat-keluar');
+    Route::get('/surat-keluar/add', [DashboardController::class, 'addSuratKeluar'] )->name('dashboard.surat-keluar.add');
+    Route::post('/surat-keluar/add', [DashboardController::class, 'storeSuratKeluar'] )->name('dashboard.surat-keluar.store');
+    Route::get('/surat-keluar/edit/{id}', [DashboardController::class, 'editSuratKeluar'] )->name('dashboard.surat-keluar.edit');
+    Route::post('/surat-keluar/edit/{id}', [DashboardController::class, 'updateSuratKeluar'] )->name('dashboard.surat-keluar.update');
+    Route::delete('/surat-keluar/delete/{id}', [DashboardController::class, 'deleteSuratKeluar'] )->name('dashboard.surat-keluar.delete');
+    // SuratRegisterKeluar
+    Route::get('/surat-register-keluar', [DashboardController::class, 'suratRegisterKeluar'] )->name('dashboard.surat-register-keluar');
+    Route::get('/surat-register-keluar/add', [DashboardController::class, 'addSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.add');
+    Route::post('/surat-register-keluar/add', [DashboardController::class, 'storeSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.store');
+    Route::get('/surat-register-keluar/edit/{id}', [DashboardController::class, 'editSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.edit');
+    Route::post('/surat-register-keluar/edit/{id}', [DashboardController::class, 'updateSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.update');
+    Route::delete('/surat-register-keluar/delete/{id}', [DashboardController::class, 'deleteSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.delete');
 });
 
 Route::get('/logout', [AuthController::class, 'logout'] )->name('logout');

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'admin',
             'nik' => '12345678901234567',
+            'jabatan' => 'Manager',
             'email' => 'test@gmail.com',
             'nohp' => fake()->unique()->phoneNumber(),
             'password' => bcrypt('password'),
