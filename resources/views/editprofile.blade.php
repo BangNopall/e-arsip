@@ -35,9 +35,29 @@
         <!-- Edit Profile -->
         <div class="flex flex-col px-4 py-6">
             <div class="flex items-center justify-between mb-4">
-                <!-- Judul Data Surat Masuk -->
+                <!-- Judul Edit Profile -->
                 <h2 class="text-stone-900 font-medium text-xl tracking-wide">Edit Profile</h2>
             </div>
+            <!-- Foto Profil dan Judul -->
+            <div class="flex flex-col items-center">
+                <!-- Judul Foto Profil -->
+                <div class="mb-2">
+                    <label for="profilePicture" class="text-stone-900 text-base font-medium tracking-wide">Foto Profil</label>
+                </div>
+
+                <!-- Lingkaran untuk Preview Foto Profil (menggunakan kelas rounded-full dari Tailwind CSS) -->
+                <div class="mb-4">
+                    <label for="profilePicture" class="cursor-pointer">
+                        <img id="previewProfilePicture" class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="https://via.placeholder.com/150" alt="Profile Image">
+                    </label>
+                </div>
+
+                <!-- Input untuk unggah foto profil -->
+                <div>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*" class="hidden" onchange="previewProfilePicture(this)">
+                </div>
+            </div>
+
             <!-- Kolom Nama -->
             <div class="mb-4">
                 <label for="namaLengkap" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama Lengkap</label>
