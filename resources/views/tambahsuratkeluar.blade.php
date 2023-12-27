@@ -86,7 +86,12 @@
                 <label for="penanggungJawab" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Penanggung Jawab</label>
                 <input type="text" placeholder="Masukkan nama penanggung jawab" id="penanggungJawab" name="penanggungJawab" class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
             </div>
-            <!-- Tombol Simpan dan Disposisi -->
+            <!-- Kolom centang "Simpan sebagai agenda rapat" -->
+            <div class="flex items-center mb-4">
+                <input type="checkbox" id="simpanAgenda" name="simpanAgenda" class="form-checkbox h-4 w-4 text-blue-500">
+                <label for="simpanAgenda" class="ml-2 text-sm text-stone-900 tracking-wide">Simpan sebagai agenda rapat</label>
+            </div>
+            <!-- Tombol Simpan -->
             <div class="flex items-center mb-20">
                 <!-- Tombol Simpan -->
                 <button class="w-40 h-9 bg-blue-500 hover:bg-blue-700 text-white rounded-md px-3 mb-12 text-sm font-normal tracking-wide transition focus:border-gray-800 focus:outline-none mr-4">
