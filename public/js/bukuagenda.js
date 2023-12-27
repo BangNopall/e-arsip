@@ -75,3 +75,7 @@ function closeSidebar() {
     openBtn.classList.remove('hidden');
     body.style.overflow = 'auto';
 }
+function openPDFViewer(pdfUrl) {
+    // Buka pop-up untuk menampilkan file PDF
+    window.open(pdfUrl, '_blank');
+}

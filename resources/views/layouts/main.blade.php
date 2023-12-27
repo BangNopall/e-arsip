@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/Logo_Kabupaten_Malang_-_Seal_of_Malang_Regency.svg') }}"
         type="image/x-icon">
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
     <title>Sip Arsip - Dashboard</title>
     @vite('resources/css/app.css')
 </head>

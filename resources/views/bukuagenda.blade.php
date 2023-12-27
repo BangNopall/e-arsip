@@ -80,11 +80,11 @@
                                 <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_terima)) }}</td>
                                 <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->created_at)) }}</td>
                                 <td class="py-2 px-4 border text-center">
-                                    <a href="#"
-                                        class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
-                                        <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>Lihat File
-                                    </a>
-                                </td>
+                                    <button onclick="openPDFViewer('link-ke-surat.pdf')" class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
+                                        <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
+                                        Lihat File
+                                    </button>
+                                </td>  
                                 <td class="py-2 px-4 border text-center">
                                     <a href="#"
                                         class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
