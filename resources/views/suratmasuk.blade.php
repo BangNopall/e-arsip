@@ -66,6 +66,7 @@
                             <th class="py-2 px-4 border text-center text-sm">Tanggal Surat</th>
                             <th class="py-2 px-4 border text-center text-sm">Perihal</th>
                             <th class="py-2 px-4 border text-center text-sm">Tanggal Simpan</th>
+                            <th class="py-2 px-4 border text-center text-sm">Isi Surat</th>
                             <th class="py-2 px-4 border text-center text-sm">Pengaturan</th>
                         </tr>
                     </thead>
@@ -76,7 +77,13 @@
                             <td class="py-2 px-4 border text-center truncate">2</td>
                             <td class="py-2 px-4 border text-center truncate">13/11/2023</td>
                             <td class="py-2 px-4 border text-center truncate">Undangan Sosialisasi Netralitas Pemilu</td>   
-                            <td class="py-2 px-4 border text-center">14/11/2023</td> 
+                            <td class="py-2 px-4 border text-center">14/11/2023</td>
+                            <td class="py-2 px-4 border text-center">
+                                <button onclick="openPDFViewer('link-ke-surat.pdf')" class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
+                                    <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
+                                    Lihat Surat
+                                </button>
+                            </td> 
                             <td class="py-2 px-2 text-center" style="display: flex; align-items: center; justify-content: center;">
                                 <a href="#" class="text-white bg-blue-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5 mr-2">Edit</a>
                                 <a href="#" class="text-white bg-red-500 rounded-md text-xs font-bold tracking-wide px-4 py-0.5">Hapus</a>
