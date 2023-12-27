@@ -63,17 +63,13 @@ class DashboardController extends Controller
             'lampiran' => 'required|numeric',
             'alamat_asal' => 'required',
             'alamat_sekarang' => 'required',
-            'foto.*' => 'required',
+            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
             'nama_penerima' => 'required',
         ]);
 
         // nama pengirim dan penerima huruf besar
         $validatedData['nama_pengirim'] = strtoupper($validatedData['nama_pengirim']);
         $validatedData['nama_penerima'] = strtoupper($validatedData['nama_penerima']);
-
-        // alamat asal dan alamat sekarang huruf besar
-        $validatedData['alamat_asal'] = strtoupper($validatedData['alamat_asal']);
-        $validatedData['alamat_sekarang'] = strtoupper($validatedData['alamat_sekarang']);
 
         // Apabila checkbox dicentang maka simpanAgenda bernilai 1, jika tidak maka bernilai 0
         if ($request->has('simpanAgenda')) {
@@ -95,16 +91,16 @@ class DashboardController extends Controller
         $suratMasuk->is_rapat = $validatedData['simpanAgenda'];
         $suratMasuk->save();
 
-        // simpan foto ke dalam tabel dokumen_surat_masuk
-        if ($request->hasFile('foto')) {
-            foreach ($request->file('foto') as $file) {
+        // simpan dokumen ke dalam tabel dokumen_surat_masuk
+        if ($request->hasFile('dok')) {
+            foreach ($request->file('dok') as $file) {
                 $nama_file = $file->getClientOriginalName();
-                $file->move(public_path() . '/images/dokumen-foto', $nama_file);
+                $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratMasuk = new DokumenSuratMasuk();
                 $dokumenSuratMasuk->surat_masuk_id = $suratMasuk->id;
                 $dokumenSuratMasuk->nama_file = $nama_file;
-                $dokumenSuratMasuk->path = '/images/dokumen-foto/' . $nama_file;
+                $dokumenSuratMasuk->path = '/dokumen/' . $nama_file;
                 $dokumenSuratMasuk->save();
             }
         }
@@ -135,7 +131,7 @@ class DashboardController extends Controller
             'lampiran' => 'required|numeric',
             'alamat_asal' => 'required',
             'alamat_sekarang' => 'required',
-            'foto.*' => 'required',
+            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
             'nama_penerima' => 'required',
         ]);
 
@@ -143,27 +139,23 @@ class DashboardController extends Controller
         $validatedData['nama_pengirim'] = strtoupper($validatedData['nama_pengirim']);
         $validatedData['nama_penerima'] = strtoupper($validatedData['nama_penerima']);
 
-        // alamat asal dan alamat sekarang huruf besar
-        $validatedData['alamat_asal'] = strtoupper($validatedData['alamat_asal']);
-        $validatedData['alamat_sekarang'] = strtoupper($validatedData['alamat_sekarang']);
-
         $suratmasuk = suratMasuk::find($id);
         $dokumensurat = DokumenSuratMasuk::where('surat_masuk_id', $id)->get();
 
-        if ($request->hasFile('foto')) {
+        if ($request->hasFile('dok')) {
             // Mencari dokumen foto berdasarkan suratmasuk id lalu di hapus dan menghapus foto di folder public/images/dokumen-foto
             foreach ($dokumensurat as $dokumen) {
                 $dokumen->delete();
                 unlink(public_path() . $dokumen->path);
             }
-            foreach ($request->file('foto') as $file) {
+            foreach ($request->file('dok') as $file) {
                 $nama_file = $file->getClientOriginalName();
-                $file->move(public_path() . '/images/dokumen-foto', $nama_file);
+                $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratMasuk = new DokumenSuratMasuk();
                 $dokumenSuratMasuk->surat_masuk_id = $suratmasuk->id;
                 $dokumenSuratMasuk->nama_file = $nama_file;
-                $dokumenSuratMasuk->path = '/images/dokumen-foto/' . $nama_file;
+                $dokumenSuratMasuk->path = '/dokumen/' . $nama_file;
                 $dokumenSuratMasuk->save();
             }
         }
@@ -263,7 +255,7 @@ class DashboardController extends Controller
             'nama_penerima' => 'required',
             'isi_surat' => 'required',
             'penanggungjawab' => 'required',
-            'foto.*' => 'required',
+            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -281,15 +273,15 @@ class DashboardController extends Controller
         $suratkeluar->save();
 
         // simpan foto ke dalam tabel dokumen_surat_masuk
-        if ($request->hasFile('foto')) {
-            foreach ($request->file('foto') as $file) {
+        if ($request->hasFile('dok')) {
+            foreach ($request->file('dok') as $file) {
                 $nama_file = $file->getClientOriginalName();
-                $file->move(public_path() . '/images/dokumen-foto', $nama_file);
+                $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratKeluar = new dokumenSuratKeluar();
                 $dokumenSuratKeluar->surat_keluar_id = $suratkeluar->id;
                 $dokumenSuratKeluar->nama_file = $nama_file;
-                $dokumenSuratKeluar->path = '/images/dokumen-foto/' . $nama_file;
+                $dokumenSuratKeluar->path = '/dokumen/' . $nama_file;
                 $dokumenSuratKeluar->save();
             }
         }
@@ -316,7 +308,7 @@ class DashboardController extends Controller
             'nama_penerima' => 'required',
             'isi_surat' => 'required',
             'penanggungjawab' => 'required',
-            'foto.*' => 'required',
+            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -327,20 +319,20 @@ class DashboardController extends Controller
         $suratkeluar = suratKeluar::find($id);
         $dokumensurat = dokumenSuratKeluar::where('surat_keluar_id', $id)->get();
 
-        if ($request->hasFile('foto')) {
+        if ($request->hasFile('dok')) {
             // Mencari dokumen foto berdasarkan suratmasuk id lalu di hapus dan menghapus foto di folder public/images/dokumen-foto
             foreach ($dokumensurat as $dokumen) {
                 $dokumen->delete();
                 unlink(public_path() . $dokumen->path);
             }
-            foreach ($request->file('foto') as $file) {
+            foreach ($request->file('dok') as $file) {
                 $nama_file = $file->getClientOriginalName();
-                $file->move(public_path() . '/images/dokumen-foto', $nama_file);
+                $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratKeluar = new dokumenSuratKeluar();
                 $dokumenSuratKeluar->surat_keluar_id = $suratkeluar->id;
                 $dokumenSuratKeluar->nama_file = $nama_file;
-                $dokumenSuratKeluar->path = '/images/dokumen-foto/' . $nama_file;
+                $dokumenSuratKeluar->path = '/dokumen/' . $nama_file;
                 $dokumenSuratKeluar->save();
             }
         }
@@ -490,6 +482,28 @@ class DashboardController extends Controller
         $suratregisterkeluar->delete();
 
         return redirect()->route('dashboard.surat-register-keluar')->with('success', 'Surat Register Keluar Berhasil Dihapus');
+    }
+
+    // ROUTE BUKU AGENDA
+    public function bukuAgenda(Request $request){
+        $search = $request->input('search');
+        $query = suratMasuk::query();
+
+        if ($search) {
+            // Menambahkan kondisi pencarian ke query
+            $query->where('perihal', 'like', '%' . $search . '%')
+                ->orWhere('nama_pengirim', 'like', '%' . $search . '%')
+                ->orWhere('no_registrasi', 'like', '%' . $search . '%')
+                ->orWhere('tanggal_surat', 'like', '%' . $search . '%')
+                ->orWhere('tanggal_terima', 'like', '%' . $search . '%')
+                ->orWhere('alamat_asal', 'like', '%' . $search . '%')
+                ->orWhere('alamat_sekarang', 'like', '%' . $search . '%')
+                ->orWhere('nama_penerima', 'like', '%' . $search . '%');
+        }
+
+        $suratmasuk = $query->get();
+
+        return view('bukuagenda', compact('suratmasuk'));
     }
 
 

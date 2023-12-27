@@ -59,6 +59,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/surat-register-keluar/edit/{id}', [DashboardController::class, 'editSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.edit');
     Route::post('/surat-register-keluar/edit/{id}', [DashboardController::class, 'updateSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.update');
     Route::delete('/surat-register-keluar/delete/{id}', [DashboardController::class, 'deleteSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.delete');
+    // BukuAgenda
+    Route::get('/buku-agenda', [DashboardController::class, 'bukuAgenda'] )->name('dashboard.buku-agenda');
+
+
+
+
 });
 
 Route::get('/logout', [AuthController::class, 'logout'] )->name('logout');

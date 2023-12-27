@@ -144,9 +144,9 @@
                         multiple files</label>
                     <input
                         class="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-gray-400 bg-clip-padding px-3 py-[0.32rem] font-normal leading-[2.15] text-stone-900 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none"
-                        id="multiple_files" type="file" name="foto[]" multiple required>
+                        id="multiple_files" type="file" name="dok[]" accept=".pdf,.docx,.doc,.ppt,.txt,.pptx,.txt,.xlx,.xlxs" multiple required>
                     <div class="mt-2 text-sm" id="fileNames"></div>
-                    @error('foto[]')
+                    @error('dok[]')
                         <div class="text-red-500 text-left">{{ $message }}</div>
                     @enderror
                 </div>
