@@ -114,6 +114,7 @@
                             <th class="py-2 px-4 border text-center text-sm">Tanggal Surat</th>
                             <th class="py-2 px-4 border text-center text-sm">Perihal</th>
                             <th class="py-2 px-4 border text-center text-sm">Tanggal Simpan</th>
+                            <th class="py-2 px-4 border text-center text-sm">Isi Surat</th>
                             <th class="py-2 px-4 border text-center text-sm">Pengaturan</th>
                         </tr>
                     </thead>
@@ -126,8 +127,13 @@
                                 <td class="py-2 px-4 border text-center truncate">
                                     {{ date('d/m/Y', strtotime($d->tanggal_surat)) }}</td>
                                 <td class="py-2 px-4 border text-center truncate">{{ $d->perihal }}</td>
-                                <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_terima)) }}
-                                </td>
+                                <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_terima)) }}</td>
+                                <td class="py-2 px-4 border text-center">
+                                    <button onclick="openPDFViewer('link-ke-surat.pdf')" class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
+                                        <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
+                                        Lihat Surat
+                                    </button>
+                                </td> 
                                 <td class="py-2 px-2 text-center"
                                     style="display: flex; align-items: center; justify-content: center;">
                                     <form action="{{ route('dashboard.surat-masuk.edit', ['id' => $d->id]) }}"
