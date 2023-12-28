@@ -131,7 +131,7 @@
                                 <td class="py-2 px-4 border text-center">
                                     @foreach ($d->dokumenSuratMasuk as $dokumen)
                                     <button onclick="openPDFViewer('/dokumen/{{ $dokumen->nama_file }}')"
-                                        class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-1 flex items-center justify-center">
+                                        class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-0.5 flex items-center justify-center">
                                         <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
                                         Lihat Surat {{ $loop->iteration }}
                                     </button>
