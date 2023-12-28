@@ -91,7 +91,7 @@
                                     <td class="py-2 px-4 border text-center">
                                         @foreach ($d->dokumenSuratMasuk as $dokumen)
                                             <button onclick="openPDFViewer('/dokumen/{{ $dokumen->nama_file }}')"
-                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-1 flex items-center justify-center">
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-0.5 flex items-center justify-center">
                                                 <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
                                                 Lihat Surat {{ $loop->iteration }}
                                             </button>
@@ -100,7 +100,7 @@
                                     <td class="py-2 px-4 border text-center">
                                         @foreach ($d->dokumenSuratMasuk as $dokumen)
                                             <a href="/dokumen/{{ $dokumen->nama_file }}"
-                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex mb-1 items-center justify-center">
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex mb-0.5 items-center justify-center">
                                                 <i class="material-icons-round mr-2"
                                                     style="font-size: 15px;">download</i>Download File
                                             </a>
@@ -124,7 +124,7 @@
                                     <td class="py-2 px-4 border text-center">
                                         @foreach ($d->dokumenSuratKeluar as $dokumen)
                                             <button onclick="openPDFViewer('/dokumen/{{ $dokumen->nama_file }}')"
-                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-1 flex items-center justify-center">
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-0.5 flex items-center justify-center">
                                                 <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
                                                 Lihat Surat {{ $loop->iteration }}
                                             </button>
@@ -156,17 +156,17 @@
                         <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
                         <div
                             class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalawal"
+                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalawal" required
                                 class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow">
                         </div>
                     </div>
 
                     <!-- Tanggal Akhir -->
                     <div class="flex flex-col mb-3">
-                        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
+                        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div> 
                         <div
                             class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalakhir"
+                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalakhir" required
                                 class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow">
                         </div>
                     </div>

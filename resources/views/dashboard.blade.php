@@ -25,11 +25,15 @@
                     </div>
                 </div>
 
-                <!-- Fitur Pencarian -->
+                <!-- Foto Profil Kecil -->
                 <div class="flex items-center hidden sm:hidden md:hidden lg:flex">
-                    <input type="text" placeholder="Cari berkas"
-                        class="text-base text-gray-500 tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
-                    <i class="material-icons-round text-gray-500 cursor-pointer" style="font-size: 21px;">search</i>
+                    @if (Auth::user()->foto != null)
+                        <img src="{{ asset(Auth::user()->foto) }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @else
+                        <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @endif
                 </div>
             </div>
         </header>
@@ -48,7 +52,7 @@
             <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row mt-4">
                 <!-- Rectangle for Surat Masuk -->
                 <div
-                    class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
+                    class="w-full sm:w-full md:w-full lg:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
                     <a href="/surat-masuk">
                         <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Masuk</h3>
                     </a>
@@ -57,7 +61,7 @@
 
                 <!-- Rectangle for Surat Keluar -->
                 <div
-                    class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
+                    class="w-full sm:w-full md:w-full lg:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
                     <a href="/surat-keluar">
                         <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Keluar</h3>
                     </a>
@@ -66,16 +70,16 @@
 
                 <!-- Rectangle for Arsip Dipinjam -->
                 <div
-                    class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
+                    class="w-full sm:w-full md:w-full lg:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
                     <a href="/surat-register-keluar">
-                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Register Keluar</h3>
+                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Register</h3>
                     </a>
                     <p class="text-4xl font-medium text-blue-500">{{ $suratRegisterKeluar }}</p>
                 </div>
 
                 <!-- Rectangle for Jadwal Retensi -->
                 <div
-                    class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
+                    class="w-full sm:w-full md:w-full lg:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
                     <a href="/buku-agenda">
                         <h3 class="text-xl font-medium tracking-wide text-stone-900">Buku Agenda</h3>
                     </a>
