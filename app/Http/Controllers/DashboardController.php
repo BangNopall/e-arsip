@@ -60,9 +60,6 @@ class DashboardController extends Controller
             $validatedData['password'] = $user->password;
         }
 
-        // Mengubah nama menjadi huruf besar
-        $validatedData['name'] = strtoupper($validatedData['name']);
-
         // Mengubah foto
         if ($request->hasFile('foto')) {
             // Mencari foto lama lalu di hapus dan menghapus foto di folder public/images/foto

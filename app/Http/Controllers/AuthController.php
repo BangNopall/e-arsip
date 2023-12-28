@@ -50,9 +50,6 @@ class AuthController extends Controller
             return redirect()->back()->withErrors(['passwordconfirm' => 'Password tidak sesuai']);
         }
 
-        // Mengubah nama menjadi huruf besar
-        $validatedData['name'] = strtoupper($validatedData['name']);
-
         // hasing password dengan bcrypt
         $validatedData['password'] = bcrypt($validatedData['password']);
 
