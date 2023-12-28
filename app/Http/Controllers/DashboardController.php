@@ -10,6 +10,7 @@ use App\Models\suratMasuk;
 use App\Models\suratRegisterKeluar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class DashboardController extends Controller
@@ -20,10 +21,59 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
-    public function editProfil(){
+    public function editProfil()
+    {
         // Mengambil data user jika login
         $user = auth()->user();
         return view('auth.editProfil', compact('user'));
+    }
+    public function updateProfil(Request $request)
+    {
+        $user = auth()->user();
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'jabatan' => 'required',
+            'email' => 'required|unique:users,email,' . $user->id . '|email:dns',
+            'password' => 'nullable|min:6',
+            'passwordconfirm' => 'nullable|min:6',
+            'foto' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        // jika null maka password tidak diubah
+        if (!$validatedData['password'] == null) {
+            if ($validatedData['password'] !== $validatedData['passwordconfirm']) {
+                return redirect()->back()->withErrors(['passwordconfirm' => 'Password tidak sesuai']);
+            }
+            $validatedData['password'] = bcrypt($validatedData['password']);
+        } else {
+            $validatedData['password'] = $user->password;
+        }
+
+        // Mengubah nama menjadi huruf besar
+        $validatedData['name'] = strtoupper($validatedData['name']);
+
+        // Mengubah foto
+        if ($request->hasFile('foto')) {
+            // Mencari foto lama lalu di hapus dan menghapus foto di folder public/images/foto
+            if ($user->foto) {
+                unlink(public_path() . $user->foto);
+            }
+
+            $foto = $request->file('foto');
+            $nama_foto = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->move(public_path() . '/images/profil/', $nama_foto);
+            $user->foto = '/images/profil/' . $nama_foto;
+        }
+
+        // Mengubah data user
+        $user->name = $validatedData['name'];
+        $user->jabatan = $validatedData['jabatan'];
+        $user->email = $validatedData['email'];
+        $user->password = $validatedData['password'];
+        $user->save();
+
+        return redirect()->route('dashboard.edit-profil')->with('success', 'Profil Berhasil Diubah');
     }
 
     // ROUTE SURAT MASUK
@@ -111,7 +161,7 @@ class DashboardController extends Controller
     {
         $suratmasuk = suratMasuk::find($id);
 
-        if(!$suratmasuk) {
+        if (!$suratmasuk) {
             return redirect()->route('dashboard.surat-masuk')->with('error', 'Surat Masuk Tidak Ditemukan');
         }
 
@@ -186,7 +236,7 @@ class DashboardController extends Controller
         $suratmasuk = suratMasuk::find($id);
         $dokumensurat = DokumenSuratMasuk::where('surat_masuk_id', $id)->get();
 
-        if(!$suratmasuk) {
+        if (!$suratmasuk) {
             return redirect()->route('dashboard.surat-masuk')->with('error', 'Surat Masuk Tidak Ditemukan');
         }
 
@@ -206,7 +256,8 @@ class DashboardController extends Controller
     {
         return view('partials.disposisi.add');
     }
-    public function storeDisposisi(Request $request){
+    public function storeDisposisi(Request $request)
+    {
         // $validatedData = $request->validate([
         //     'nomor_surat' => 'required|numeric',
         //     'tanggal_surat' => 'required',
@@ -227,7 +278,8 @@ class DashboardController extends Controller
     }
 
     // ROUTE SURAT KELUAR
-    public function suratKeluar(Request $request){
+    public function suratKeluar(Request $request)
+    {
         $search = $request->input('search');
         $query = suratKeluar::query();
 
@@ -244,10 +296,12 @@ class DashboardController extends Controller
 
         return view('suratkeluar', compact('suratkeluar'));
     }
-    public function addSuratKeluar(){
+    public function addSuratKeluar()
+    {
         return view('partials.suratKeluar.add');
     }
-    public function storeSuratKeluar(Request $request){
+    public function storeSuratKeluar(Request $request)
+    {
         $validatedData = $request->validate([
             'nomor_surat' => 'required|numeric',
             'tanggal_surat' => 'required',
@@ -263,6 +317,12 @@ class DashboardController extends Controller
         $validatedData['nama_penerima'] = strtoupper($validatedData['nama_penerima']);
         $validatedData['penanggungjawab'] = strtoupper($validatedData['penanggungjawab']);
 
+        if ($request->has('simpanAgenda')) {
+            $validatedData['simpanAgenda'] = 1;
+        } else {
+            $validatedData['simpanAgenda'] = 0;
+        }
+
         $suratkeluar = new suratKeluar();
         $suratkeluar->nomor_surat = $validatedData['nomor_surat'];
         $suratkeluar->tanggal_surat = $validatedData['tanggal_surat'];
@@ -270,6 +330,7 @@ class DashboardController extends Controller
         $suratkeluar->nama_penerima = $validatedData['nama_penerima'];
         $suratkeluar->isi_surat = $validatedData['isi_surat'];
         $suratkeluar->penanggungjawab = $validatedData['penanggungjawab'];
+        $suratkeluar->is_rapat = $validatedData['simpanAgenda'];
         $suratkeluar->save();
 
         // simpan foto ke dalam tabel dokumen_surat_masuk
@@ -288,10 +349,11 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard.surat-keluar')->with('success', 'Surat Kelar Berhasil Ditambahkan');
     }
-    public function editSuratKeluar($id){
+    public function editSuratKeluar($id)
+    {
         $suratkeluar = suratKeluar::find($id);
 
-        if(!$suratkeluar) {
+        if (!$suratkeluar) {
             return redirect()->route('dashboard.surat-keluar')->with('error', 'Surat Keluar Tidak Ditemukan');
         }
 
@@ -300,7 +362,8 @@ class DashboardController extends Controller
 
         return view('partials.suratKeluar.edit', compact('suratkeluar', 'dokumensurat'));
     }
-    public function updateSuratKeluar(Request $request, $id){
+    public function updateSuratKeluar(Request $request, $id)
+    {
         $validatedData = $request->validate([
             'nomor_surat' => 'required|numeric',
             'tanggal_surat' => 'required',
@@ -337,21 +400,29 @@ class DashboardController extends Controller
             }
         }
 
+        if ($request->has('simpanAgenda')) {
+            $validatedData['simpanAgenda'] = 1;
+        } else {
+            $validatedData['simpanAgenda'] = 0;
+        }
+
         $suratkeluar->nomor_surat = $validatedData['nomor_surat'];
         $suratkeluar->tanggal_surat = $validatedData['tanggal_surat'];
         $suratkeluar->nama_pengirim = $validatedData['nama_pengirim'];
         $suratkeluar->nama_penerima = $validatedData['nama_penerima'];
         $suratkeluar->isi_surat = $validatedData['isi_surat'];
         $suratkeluar->penanggungjawab = $validatedData['penanggungjawab'];
+        $suratkeluar->is_rapat = $validatedData['simpanAgenda'];
         $suratkeluar->save();
 
         return redirect()->route('dashboard.surat-keluar')->with('success', 'Surat Keluar Berhasil Diubah');
     }
-    public function deleteSuratKeluar($id){
+    public function deleteSuratKeluar($id)
+    {
         $suratkeluar = suratKeluar::find($id);
         $dokumensurat = dokumenSuratKeluar::where('surat_keluar_id', $id)->get();
 
-        if(!$suratkeluar) {
+        if (!$suratkeluar) {
             return redirect()->route('dashboard.surat-keluar')->with('error', 'Surat Keluar Tidak Ditemukan');
         }
 
@@ -367,7 +438,8 @@ class DashboardController extends Controller
     }
 
     // ROUTE SURAT REGISTER KELUAR
-    public function suratRegisterKeluar(Request $request){
+    public function suratRegisterKeluar(Request $request)
+    {
         $search = $request->input('search');
         $query = suratRegisterKeluar::query();
 
@@ -390,10 +462,12 @@ class DashboardController extends Controller
 
         return view('suratregisterkeluar', compact('suratregisterkeluar'));
     }
-    public function addSuratRegisterKeluar(){
+    public function addSuratRegisterKeluar()
+    {
         return view('partials.suratRegisterKeluar.add');
     }
-    public function storeSuratRegisterKeluar(Request $request){
+    public function storeSuratRegisterKeluar(Request $request)
+    {
         $validatedData = $request->validate([
             'nama_lengkap' => 'required',
             'nik' => 'required|numeric',
@@ -428,16 +502,18 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard.surat-register-keluar')->with('success', 'Surat Register Keluar Berhasil Ditambahkan');
     }
-    public function editSuratRegisterKeluar($id){
+    public function editSuratRegisterKeluar($id)
+    {
         $suratregisterkeluar = suratRegisterKeluar::find($id);
 
-        if(!$suratregisterkeluar) {
+        if (!$suratregisterkeluar) {
             return redirect()->route('dashboard.surat-register-keluar')->with('error', 'Surat Register Keluar Tidak Ditemukan');
         }
 
         return view('partials.suratRegisterKeluar.edit', compact('suratregisterkeluar'));
     }
-    public function updateSuratRegisterKeluar(Request $request, $id){
+    public function updateSuratRegisterKeluar(Request $request, $id)
+    {
         $validatedData = $request->validate([
             'nama_lengkap' => 'required',
             'nik' => 'required|numeric',
@@ -472,10 +548,11 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard.surat-register-keluar')->with('success', 'Surat Register Keluar Berhasil Diubah');
     }
-    public function deleteSuratRegisterKeluar($id){
+    public function deleteSuratRegisterKeluar($id)
+    {
         $suratregisterkeluar = suratRegisterKeluar::find($id);
 
-        if(!$suratregisterkeluar) {
+        if (!$suratregisterkeluar) {
             return redirect()->route('dashboard.surat-register-keluar')->with('error', 'Surat Register Keluar Tidak Ditemukan');
         }
 
@@ -485,7 +562,8 @@ class DashboardController extends Controller
     }
 
     // ROUTE BUKU AGENDA
-    public function bukuAgenda(Request $request){
+    public function bukuAgenda(Request $request)
+    {
         $search = $request->input('search');
         $query = suratMasuk::query();
 
@@ -498,17 +576,18 @@ class DashboardController extends Controller
                 ->orWhere('tanggal_terima', 'like', '%' . $search . '%')
                 ->orWhere('alamat_asal', 'like', '%' . $search . '%')
                 ->orWhere('alamat_sekarang', 'like', '%' . $search . '%')
-                ->orWhere('nama_penerima', 'like', '%' . $search . '%');
+                ->orWhere('nama_penerima', 'like', '%' . $search . '%')
+                // menambahkan kondisi pencarian ke tabel surat keluar
+                ->orWhere('nomor_surat', 'like', '%' . $search . '%')
+                ->orWhere('nama_pengirim', 'like', '%' . $search . '%')
+                ->orWhere('tanggal_surat', 'like', '%' . $search . '%')
+                ->orWhere('nama_penerima', 'like', '%' . $search . '%')
+                ->orWhere('isi_surat', 'like', '%' . $search . '%')
+                ->orWhere('penanggungjawab', 'like', '%' . $search . '%');
         }
-
         $suratmasuk = $query->get();
+        $suratkeluar = suratKeluar::all();
 
-        return view('bukuagenda', compact('suratmasuk'));
+        return view('bukuagenda', compact('suratmasuk', 'suratkeluar'));
     }
-
-
-
-
-
-
 }

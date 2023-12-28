@@ -14,14 +14,14 @@
                 <div class="flex items-center text-left mb-2 hidden lg:flex">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Datang</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Agus Salim, S.Sos., M.M</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ Auth::user()->name }}</p>
                     </div>
                 </div>
                 <!-- Selamat Datang sm dan md manipulasi-->
                 <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Datang</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Agus Salim, S.Sos., M.M</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ Auth::user()->name }}</p>
                     </div>
                 </div>
 

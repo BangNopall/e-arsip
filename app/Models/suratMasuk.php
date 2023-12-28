@@ -25,4 +25,12 @@ class suratMasuk extends Model
     {
         return $this->hasMany(DokumenSuratMasuk::class);
     }
+    public function suratkeluar()
+    {
+        return $this->hasMany(suratKeluar::class, 'surat_keluar_id');
+    }
+    public function dokumensuratkeluar()
+    {
+        return $this->hasMany(dokumenSuratKeluar::class, 'surat_keluar_id');
+    }
 }

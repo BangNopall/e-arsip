@@ -1,43 +1,43 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var sidebar = document.getElementById('mySidebar');
-    var closeBtn = document.getElementById('closeSidebarBtn');
-    var openBtn = document.getElementById('openSidebarBtn');
-    var mainContent = document.getElementById('myMaincontent');
+document.addEventListener("DOMContentLoaded", function () {
+    var sidebar = document.getElementById("mySidebar");
+    var closeBtn = document.getElementById("closeSidebarBtn");
+    var openBtn = document.getElementById("openSidebarBtn");
+    var mainContent = document.getElementById("myMaincontent");
     var body = document.body;
 
     function adjustSidebarAndScroll() {
         var shouldFix = window.scrollY > 0;
         var isMobile = window.innerWidth < 768;
 
-        if (sidebar.classList.contains('hidden')) {
-            sidebar.style.position = shouldFix ? 'sticky' : 'static';
-            closeBtn.style.display = 'none';
-            body.style.overflow = 'auto';
+        if (sidebar.classList.contains("hidden")) {
+            sidebar.style.position = shouldFix ? "sticky" : "static";
+            closeBtn.style.display = "none";
+            body.style.overflow = "auto";
         } else {
-            sidebar.style.position = 'fixed';
-            sidebar.style.zIndex = '1';
-            closeBtn.style.display = 'flex';
+            sidebar.style.position = "fixed";
+            sidebar.style.zIndex = "1";
+            closeBtn.style.display = "flex";
 
             if (isMobile) {
-                mainContent.style.marginLeft = '0';
-                body.style.overflow = 'hidden';
+                mainContent.style.marginLeft = "0";
+                body.style.overflow = "hidden";
             } else {
-                mainContent.style.marginLeft = '64px';
-                body.style.overflow = 'hidden';
+                mainContent.style.marginLeft = "64px";
+                body.style.overflow = "hidden";
             }
         }
     }
 
-    window.addEventListener('scroll', function () {
+    window.addEventListener("scroll", function () {
         adjustSidebarAndScroll();
     });
 
-    openBtn.addEventListener('click', function () {
+    openBtn.addEventListener("click", function () {
         openSidebar();
         adjustSidebarAndScroll();
     });
 
-    closeBtn.addEventListener('click', function () {
+    closeBtn.addEventListener("click", function () {
         closeSidebar();
         adjustSidebarAndScroll();
     });
@@ -47,31 +47,46 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function openSidebar() {
-    var sidebar = document.getElementById('mySidebar');
-    var closeBtn = document.getElementById('closeSidebarBtn');
-    var openBtn = document.getElementById('openSidebarBtn');
-    var mainContent = document.getElementById('myMaincontent');
+    var sidebar = document.getElementById("mySidebar");
+    var closeBtn = document.getElementById("closeSidebarBtn");
+    var openBtn = document.getElementById("openSidebarBtn");
+    var mainContent = document.getElementById("myMaincontent");
     var body = document.body;
 
-    sidebar.classList.remove('hidden');
-    closeBtn.classList.remove('hidden');
-    openBtn.classList.add('hidden');
-    sidebar.style.position = 'fixed';
-    sidebar.style.zIndex = '1';
-    mainContent.style.marginLeft = '64px';
-    body.style.overflow = 'hidden';
+    sidebar.classList.remove("hidden");
+    closeBtn.classList.remove("hidden");
+    openBtn.classList.add("hidden");
+    sidebar.style.position = "fixed";
+    sidebar.style.zIndex = "1";
+    mainContent.style.marginLeft = "64px";
+    body.style.overflow = "hidden";
 }
 
 function closeSidebar() {
-    var sidebar = document.getElementById('mySidebar');
-    var closeBtn = document.getElementById('closeSidebarBtn');
-    var openBtn = document.getElementById('openSidebarBtn');
-    var mainContent = document.getElementById('myMaincontent');
+    var sidebar = document.getElementById("mySidebar");
+    var closeBtn = document.getElementById("closeSidebarBtn");
+    var openBtn = document.getElementById("openSidebarBtn");
+    var mainContent = document.getElementById("myMaincontent");
     var body = document.body;
 
-    sidebar.classList.add('hidden');
-    mainContent.style.marginLeft = '0';
-    closeBtn.classList.add('hidden');
-    openBtn.classList.remove('hidden');
-    body.style.overflow = 'auto';
+    sidebar.classList.add("hidden");
+    mainContent.style.marginLeft = "0";
+    closeBtn.classList.add("hidden");
+    openBtn.classList.remove("hidden");
+    body.style.overflow = "auto";
+}
+
+function previewImage(input) {
+    var file = input.files[0];
+
+    if (file) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            document.getElementById("previewProfilePicture").src =
+                e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
 }

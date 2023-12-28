@@ -125,6 +125,12 @@
                         <div class="text-red-500 text-left">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="simpanAgenda" name="simpanAgenda"
+                        class="form-checkbox h-4 w-4 text-blue-500" @if ($suratkeluar->is_rapat == 1) checked @endif>
+                    <label for="simpanAgenda" class="ml-2 text-sm text-stone-900 tracking-wide">Simpan sebagai agenda
+                        rapat</label>
+                </div>
                 <!-- Tombol Simpan dan Disposisi -->
                 <div class="flex items-center mb-20">
                     <!-- Tombol Simpan -->

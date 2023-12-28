@@ -10,11 +10,6 @@
                     <i class="material-icons-round text-gray-500 hover:text-gray-800 transition duration-300 ease-in-out"
                         style="font-size: 26px;">sort</i>
                 </div>
-                <div id="closeSidebarBtn" class="sm:hidden md:hidden absolute top-4 right-44 cursor-pointer hidden"
-                    onclick="closeSidebar()">
-                    <i class="material-icons-round text-gray-500 hover:text-gray-800 transition duration-300 ease-in-out"
-                        style="font-size: 26px;">close</i>
-                </div>
                 <!-- Selamat Beraktivitas dan Tanggal -->
                 <div class="flex items-center text-left mb-1 hidden lg:flex">
                     <div>
@@ -120,6 +115,12 @@
                     @error('penanggungjawab')
                         <div class="text-red-500 text-left">{{ $message }}</div>
                     @enderror
+                </div>
+                <div class="flex items-center mb-4">
+                    <input type="checkbox" id="simpanAgenda" name="simpanAgenda"
+                        class="form-checkbox h-4 w-4 text-blue-500">
+                    <label for="simpanAgenda" class="ml-2 text-sm text-stone-900 tracking-wide">Simpan sebagai agenda
+                        rapat</label>
                 </div>
                 <!-- Tombol Simpan dan Disposisi -->
                 <div class="flex items-center mb-20">

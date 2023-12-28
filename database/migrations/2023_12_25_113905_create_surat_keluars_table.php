@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_penerima');
             $table->string('isi_surat');
             $table->string('penanggungjawab');
+            $table->bigInteger('is_rapat')->default(0);
             $table->timestamps();
         });
     }

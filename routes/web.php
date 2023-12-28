@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     // Home
     Route::get('/dashboard', [DashboardController::class, 'dashboard'] )->name('dashboard');
     Route::get('/edit-profil', [DashboardController::class, 'editProfil'] )->name('dashboard.edit-profil');
+    Route::post('/edit-profil', [DashboardController::class, 'updateProfil'] )->name('dashboard.update-profil');
     // SuratMasuk
     Route::get('/surat-masuk', [DashboardController::class, 'suratMasuk'] )->name('dashboard.surat-masuk');
     Route::get('/surat-masuk/add', [DashboardController::class, 'addSuratMasuk'] )->name('dashboard.surat-masuk.add');

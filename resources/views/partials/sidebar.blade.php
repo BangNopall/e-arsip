@@ -7,14 +7,18 @@
         </div>
 
         <!-- Photo Profile -->
-        <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="{{ asset('images/FotoProfil.jpg') }}"
-            alt="Profile Image">
-
+        @if (Auth::user()->foto != null)
+            <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="{{ asset(Auth::user()->foto) }}"
+                alt="Profile Image">
+        @else
+            <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="{{ asset('images/FotoProfil.jpg') }}"
+                alt="Profile Image">
+        @endif
         <!-- Nama Pengguna -->
-        <div class="text-stone-900 text-lg font-medium font-Poppins tracking-wide mt-1">Agus Salim, S.Sos., M.M</div>
-
+        <div class="text-stone-900 text-lg font-medium font-Poppins tracking-wide mt-1">
+            {{ Auth::user()->name }}</div>
         <!-- Nama Jabatan -->
-        <div class="text-gray-500 text-sm font-normal font-Poppins tracking-wide leading-3">Manajer Senior</div>
+        <div class="text-gray-500 text-sm font-normal font-Poppins tracking-wide leading-3">{{ Auth::user()->jabatan }}</div>
 
         <!-- Navigation -->
         <nav class="mt-9">

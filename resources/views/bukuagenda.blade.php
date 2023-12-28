@@ -14,21 +14,26 @@
                 <div class="flex items-center text-left mb-1 hidden lg:flex">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
                 <!-- Selamat Beraktivitas dan Tanggal manipulasi -->
                 <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
 
                 <!-- Foto Profil Kecil -->
                 <div class="flex items-center hidden sm:hidden md:hidden lg:flex">
-                    <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil"
-                        class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @if (Auth::user()->foto != null)
+                        <img src="{{ asset(Auth::user()->foto) }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @else
+                        <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @endif
                 </div>
             </div>
         </header>
@@ -49,7 +54,7 @@
                     <!-- Kolom Pencarian -->
                     <form action="/buku-agenda" method="get">
                         <input type="text" placeholder="Cari buku agenda" name="search"
-                        class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
+                            class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
                     </form>
                 </div>
             </div>
@@ -70,30 +75,71 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200 border text-sm">
-                        @if ($suratmasuk)
-                            @foreach ($suratmasuk as $index => $d)
-                            <tr>
-                                <td class="py-2 px-2 border text-center">{{ $index + 1 }}</td>
-                                <td class="py-2 px-4 border text-center truncate">{{ $d->alamat_asal }}</td>
-                                <td class="py-2 px-4 border text-center truncate">{{ $d->alamat_sekarang }}</td>
-                                <td class="py-2 px-4 border text-center truncate">mboh</td>
-                                <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->tanggal_terima)) }}</td>
-                                <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->created_at)) }}</td>
-                                <td class="py-2 px-4 border text-center">
-                                    <button onclick="openPDFViewer('link-ke-surat.pdf')" class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
-                                        <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
-                                        Lihat File
-                                    </button>
-                                </td>  
-                                <td class="py-2 px-4 border text-center">
-                                    <a href="#"
-                                        class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex items-center justify-center">
-                                        <i class="material-icons-round mr-2" style="font-size: 15px;">download</i>Download File
-                                    </a>
-                                </td>
-                            </tr>  
-                            @endforeach
-                        @endif
+                        @foreach ($suratmasuk as $index => $d)
+                            @if ($d->is_rapat == 1)
+                                <tr>
+                                    <td class="py-2 px-2 border text-center">{{ $index + 1 }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">{{ $d->nama_pengirim }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">{{ $d->nama_penerima }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">Surat Masuk</td>
+                                    <td class="py-2 px-4 border text-center">
+                                        {{ date('d/m/Y', strtotime($d->tanggal_terima)) }}</td>
+                                    <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->created_at)) }}
+                                    </td>
+                                    <td class="py-2 px-4 border text-center">
+                                        @foreach ($d->dokumenSuratMasuk as $dokumen)
+                                            <button onclick="openPDFViewer('/dokumen/{{ $dokumen->nama_file }}')"
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-1 flex items-center justify-center">
+                                                <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
+                                                Lihat Surat {{ $loop->iteration }}
+                                            </button>
+                                        @endforeach
+                                    </td>
+                                    <td class="py-2 px-4 border text-center">
+                                        @foreach ($d->dokumenSuratMasuk as $dokumen)
+                                            <a href="/dokumen/{{ $dokumen->nama_file }}"
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex mb-1 items-center justify-center">
+                                                <i class="material-icons-round mr-2"
+                                                    style="font-size: 15px;">download</i>Download File
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                        {{-- menampilkan suratkeluar --}}
+                        @foreach ($suratkeluar as $index => $d)
+                            @if ($d->is_rapat == 1)
+                                <tr>
+                                    <td class="py-2 px-2 border text-center">{{ $index + 1 }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">{{ $d->nama_pengirim }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">{{ $d->nama_penerima }}</td>
+                                    <td class="py-2 px-4 border text-center truncate">Surat Keluar</td>
+                                    <td class="py-2 px-4 border text-center">
+                                        {{ date('d/m/Y', strtotime($d->tanggal_terima)) }}</td>
+                                    <td class="py-2 px-4 border text-center">{{ date('d/m/Y', strtotime($d->created_at)) }}
+                                    </td>
+                                    <td class="py-2 px-4 border text-center">
+                                        @foreach ($d->dokumenSuratKeluar as $dokumen)
+                                            <button onclick="openPDFViewer('/dokumen/{{ $dokumen->nama_file }}')"
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 mb-1 flex items-center justify-center">
+                                                <i class="material-icons-round mr-2" style="font-size: 15px;">visibility</i>
+                                                Lihat Surat {{ $loop->iteration }}
+                                            </button>
+                                        @endforeach
+                                    </td>
+                                    <td class="py-2 px-4 border text-center">
+                                        @foreach ($d->dokumenSuratKeluar as $dokumen)
+                                            <a href="/dokumen/{{ $dokumen->nama_file }}"
+                                                class="text-white bg-green-500 rounded-md text-xs font-bold tracking-wide px-2 py-0.5 flex mb-1 items-center justify-center">
+                                                <i class="material-icons-round mr-2"
+                                                    style="font-size: 15px;">download</i>Download File
+                                            </a>
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>

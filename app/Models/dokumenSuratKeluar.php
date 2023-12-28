@@ -10,7 +10,7 @@ class dokumenSuratKeluar extends Model
     use HasFactory;
 
     protected $fillable = [
-        'surat_masuk_id',
+        'surat_keluar_id',
         'nama_file',
         'path',
     ];

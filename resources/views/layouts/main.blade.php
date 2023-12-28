@@ -24,6 +24,7 @@
     </div>
     {{-- end main content --}}
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var sidebar = document.getElementById('mySidebar');
