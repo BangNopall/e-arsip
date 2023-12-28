@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::view('/tambahregisterkeluar', [DashboardController::class, 'tambahregisterkeluar'] )->name('dashboard.tambahregistermasuk');
-Route::view('/editprofile', [DashboardController::class, 'editprofile'] )->name('dashboard.editprofile');
-
-// ROUTE DEVELOP UI
-Route::view('/suratmasukui', 'suratmasuk')->name('test');
-
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', function () {
@@ -62,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/surat-register-keluar/delete/{id}', [DashboardController::class, 'deleteSuratRegisterKeluar'] )->name('dashboard.surat-register-keluar.delete');
     // BukuAgenda
     Route::get('/buku-agenda', [DashboardController::class, 'bukuAgenda'] )->name('dashboard.buku-agenda');
+    Route::post('/buku-agenda', [DashboardController::class, 'bukuAgendaCetak'] )->name('dashboard.buku-agenda.cetak');
+    // Route::get('/cetak', [DashboardController::class, 'bukuAgendaCetak'] )->name('dashboard.buku-agenda.cetak');
+    Route::view('/cetak', 'partials.bukuAgenda.print');
 
 
 

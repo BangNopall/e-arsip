@@ -14,14 +14,16 @@
                 <div class="flex items-center text-left mb-1 hidden lg:flex">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">
+                            {{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
                 <!-- Selamat Beraktivitas dan Tanggal manipulasi -->
                 <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">
+                            {{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
 
@@ -146,70 +148,37 @@
             <!-- Rekap Buku Agenda -->
             <div class="mt-8 mb-1 text-base tracking-wide font-medium text-stone-900">Rekap Buku Agenda</div>
             <!-- Tanggal Awal dan Tanggal Akhir untuk mode layar handphone dan tablet -->
-            <div class="flex flex-col md:hidden">
-                <!-- Tanggal Awal -->
-                <div class="flex flex-col mb-3">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
-                    <div
-                        class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input type="text" placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow" />
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
+            <form action="{{ route('dashboard.buku-agenda.cetak') }}" method="post">
+                @csrf
+                <div class="flex flex-col md:flex-row gap-2">
+                    <!-- Tanggal Awal -->
+                    <div class="flex flex-col mb-3">
+                        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
+                        <div
+                            class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalawal"
+                                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow">
+                        </div>
+                    </div>
+
+                    <!-- Tanggal Akhir -->
+                    <div class="flex flex-col mb-3">
+                        <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
+                        <div
+                            class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
+                            <input type="date" placeholder="dd/mm/yyyy" name="tanggalakhir"
+                                class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow">
                         </div>
                     </div>
                 </div>
-
-                <!-- Tanggal Akhir -->
-                <div class="flex flex-col mb-3">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
-                    <div
-                        class="relative border-2 border-gray-400 rounded-md h-8 w-full flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input type="text" placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow" />
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
-                        </div>
-                    </div>
+                <!-- Tombol Cetak Buku Agenda -->
+                <div class="flex justify-start mb-44 items-center">
+                    <button type="submit"
+                        class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
+                        Cetak Buku Agenda
+                    </button>
                 </div>
-            </div>
-
-            <!-- Tanggal Awal dan Tanggal Akhir untuk mode layar desktop -->
-            <div class="hidden md:flex flex-row">
-                <!-- Tanggal Awal -->
-                <div class="flex flex-col mb-3">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Awal</div>
-                    <div
-                        class="relative border-2 border-gray-400 rounded-md h-8 w-72 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input type="text" placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow" />
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tanggal Akhir -->
-                <div class="flex flex-col ml-4">
-                    <div class="text-xs font-medium tracking-wide text-stone-900 mb-0.5">Tanggal Akhir</div>
-                    <div
-                        class="relative border-2 border-gray-400 rounded-md h-8 w-72 flex items-center transition-all duration-300 ease-in-out focus-within:border-gray-800">
-                        <input type="text" placeholder="dd/mm/yyyy"
-                            class="outline-none tracking-wide px-2 text-sm text-gray-500 flex-grow" />
-                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                            <i class="material-icons-round text-gray-400 text-lg" style="font-size: 18px;">date_range</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tombol Cetak Buku Agenda -->
-            <div class="flex justify-start mb-44 items-center">
-                <button
-                    class="flex items-center bg-blue-500 text-white font-medium text-xs tracking-wide rounded-md px-3 py-2">
-                    Cetak Buku Agenda
-                </button>
-            </div>
+            </form>
         </div>
         <!-- Footer -->
         <footer class="text-stone-900 text-sm text-left ml-4 mb-5 mt-auto w-full bg-gray-50">

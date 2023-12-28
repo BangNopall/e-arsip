@@ -14,21 +14,26 @@
                 <div class="flex items-center text-left mb-1 hidden lg:flex">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
                 <!-- Selamat Beraktivitas dan Tanggal manipulasi -->
                 <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">Senin, 20 November 2023</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
 
                 <!-- Foto Profil Kecil -->
                 <div class="flex items-center hidden sm:hidden md:hidden lg:flex">
-                    <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil"
-                        class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @if (Auth::user()->foto != null)
+                        <img src="{{ asset(Auth::user()->foto) }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @else
+                        <img src="{{ asset('images/FotoProfil.jpg') }}" alt="Profile Image" alt="Foto Profil"
+                            class="w-10 h-10 rounded-full border border-blue-500 p-0.5">
+                    @endif
                 </div>
             </div>
         </header>

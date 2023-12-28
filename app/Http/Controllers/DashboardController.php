@@ -19,7 +19,17 @@ class DashboardController extends Controller
     // ROUTE HOME
     public function dashboard()
     {
-        return view('dashboard');
+        // Mengambil semua data surat masuk dan di count
+        $suratMasuk = suratMasuk::all()->count();
+        $suratKeluar = suratKeluar::all()->count();
+        $suratRegisterKeluar = suratRegisterKeluar::all()->count();
+
+        // mengambil semua data surat masuk dan surat keluar yang is_rapat bernilai 1 dan di count
+        $suratMasukRapat = suratMasuk::where('is_rapat', 1)->count();
+        $suratKeluarRapat = suratKeluar::where('is_rapat', 1)->count();
+        $totalsuratRapat = $suratMasukRapat + $suratKeluarRapat;
+
+        return view('dashboard', compact('suratMasuk', 'suratKeluar', 'suratRegisterKeluar', 'totalsuratRapat'));
     }
     public function editProfil()
     {
@@ -589,5 +599,25 @@ class DashboardController extends Controller
         $suratkeluar = suratKeluar::all();
 
         return view('bukuagenda', compact('suratmasuk', 'suratkeluar'));
+    }
+    public function bukuAgendaCetak(Request $request)
+    {
+        $tanggalAwal = $request->input('tanggalawal');
+        $tanggalAkhir = $request->input('tanggalakhir');
+
+        // Mengambil data berdasarkan created_at tetapi hanya tanggalnya saja
+
+        $datasm = suratMasuk::whereDate('created_at', '>=', $tanggalAwal)
+            ->whereDate('created_at', '<=', $tanggalAkhir)
+            ->where('is_rapat', 1)
+            ->get();
+
+        $datask = suratKeluar::whereDate('created_at', '>=', $tanggalAwal)
+            ->whereDate('created_at', '<=', $tanggalAkhir)
+            ->where('is_rapat', 1)
+            ->get();
+
+        $pdf = Pdf::loadView('partials.bukuAgenda.print', compact('datasm', 'datask', 'tanggalAwal', 'tanggalAkhir'));
+        return $pdf->download('buku-agenda.pdf');
     }
 }

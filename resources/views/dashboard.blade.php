@@ -49,37 +49,37 @@
                 <!-- Rectangle for Surat Masuk -->
                 <div
                     class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
-                    <a href="suratmasuk.html">
+                    <a href="/surat-masuk">
                         <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Masuk</h3>
                     </a>
-                    <p class="text-4xl font-medium text-blue-500">10</p>
+                    <p class="text-4xl font-medium text-blue-500">{{ $suratMasuk }}</p>
                 </div>
 
                 <!-- Rectangle for Surat Keluar -->
                 <div
                     class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
-                    <a href="">
+                    <a href="/surat-keluar">
                         <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Keluar</h3>
                     </a>
-                    <p class="text-4xl font-medium text-blue-500">5</p>
+                    <p class="text-4xl font-medium text-blue-500">{{ $suratKeluar }}</p>
                 </div>
 
                 <!-- Rectangle for Arsip Dipinjam -->
                 <div
                     class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
-                    <a href="">
-                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Arsip Dipinjam</h3>
+                    <a href="/surat-register-keluar">
+                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Register Keluar</h3>
                     </a>
-                    <p class="text-4xl font-medium text-blue-500">3</p>
+                    <p class="text-4xl font-medium text-blue-500">{{ $suratRegisterKeluar }}</p>
                 </div>
 
                 <!-- Rectangle for Jadwal Retensi -->
                 <div
                     class="w-full sm:w-full md:w-full lg:w-48 xl:w-48 2xl:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
-                    <a href="">
-                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Jadwal Retensi</h3>
+                    <a href="/buku-agenda">
+                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Buku Agenda</h3>
                     </a>
-                    <p class="text-4xl font-medium text-blue-500">5</p>
+                    <p class="text-4xl font-medium text-blue-500">{{ $totalsuratRapat }}</p>
                 </div>
             </div>
 

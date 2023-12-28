@@ -15,10 +15,10 @@
                 alt="Profile Image">
         @endif
         <!-- Nama Pengguna -->
-        <div class="text-stone-900 text-lg font-medium font-Poppins tracking-wide mt-1">
+        <div class="text-stone-900 text-lg text-center font-medium font-Poppins tracking-wide mt-1">
             {{ Auth::user()->name }}</div>
         <!-- Nama Jabatan -->
-        <div class="text-gray-500 text-sm font-normal font-Poppins tracking-wide leading-3">{{ Auth::user()->jabatan }}</div>
+        <div class="text-gray-500 text-sm font-normal text-center font-Poppins tracking-wide leading-3">{{ Auth::user()->jabatan }}</div>
 
         <!-- Navigation -->
         <nav class="mt-9">
