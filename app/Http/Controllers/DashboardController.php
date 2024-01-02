@@ -615,7 +615,7 @@ class DashboardController extends Controller
     // ROUTE JADWAL RETENSI
     public function jadwalRetensi(){
         $years = range(date('Y'), 2000);
-        return view('jadwalretensi', compact('years'));
+        return view('jadwalRetensi', compact('years'));
     }
 
     public function hapusJadwalRetensi(Request $request){
