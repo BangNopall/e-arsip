@@ -14,14 +14,16 @@
                 <div class="flex items-center text-left mb-1 hidden lg:flex">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">
+                            {{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
                 <!-- Selamat Beraktivitas dan Tanggal manipulasi -->
                 <div class="flex items-center text-left mb-2 ml-auto text-right lg:hidden">
                     <div>
                         <p class="text-stone-900 font-medium tracking-wide text-base">Selamat Beraktivitas</p>
-                        <p class="text-sm tracking-wide text-gray-500 leading-3">{{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
+                        <p class="text-sm tracking-wide text-gray-500 leading-3">
+                            {{ \Carbon\Carbon::now()->format('l, d F Y') }}</p>
                     </div>
                 </div>
 
@@ -50,7 +52,8 @@
                     <label for="nomorSurat" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Nomor
                         Surat</label>
                     <input type="number" placeholder="Masukkan nomor surat" id="nomorSurat" name="nomor_surat"
-                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        required>
                 </div>
                 <!-- Kolom Tanggal Surat -->
                 <div class="mb-4">
@@ -77,7 +80,8 @@
                     <label for="asalSurat" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Asal
                         Surat</label>
                     <input type="text" placeholder="Masukkan asal surat" id="asalSurat" name="asal_surat"
-                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        required>
                 </div>
 
                 <!-- Kolom Ringkasan Surat -->
@@ -87,34 +91,68 @@
                         Surat</label>
                     <input type="text" placeholder="Masukkan isi ringkasan surat" id="ringkasanSurat"
                         name="isi_ringkasan_surat"
-                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        required>
                 </div>
                 <!-- Kolom Diteruskan Kepada -->
                 <div class="mb-4">
                     <label for="namaPenerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Diteruskan
                         Kepada</label>
-                        <select name="diteruskan_kepada" class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" id="">
-                            <option selected hidden>Pilih</option>
-                            <option value="SEKRETARIS DESA">SEKRETARIS DESA</option>
-                            <option value="KASI KESRA">KASI KESRA</option>
-                            <option value="KASI PEMERINTAHAN">KASI PEMERINTAHAN</option>
-                            <option value="KASI PELAYANAN">KASI PELAYANAN</option>
-                        </select>
+                    <select name="diteruskan_kepada"
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        id="">
+                        <option selected hidden>Pilih</option>
+                        <option value="SEKRETARIS DESA">SEKRETARIS DESA</option>
+                        <option value="KASI KESRA">KASI KESRA</option>
+                        <option value="KASI PEMERINTAHAN">KASI PEMERINTAHAN</option>
+                        <option value="KASI PELAYANAN">KASI PELAYANAN</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="namaPenerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Sifat</label>
+                    <select name="sifat"
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        id="">
+                        <option selected hidden>Pilih</option>
+                        <option value="PENTING">Penting</option>
+                        <option value="BIASA">Biasa</option>
+                        <option value="RAHASIA">Rahasia</option>
+                    </select>
+                </div>
+                <!-- Kolom Diteruskan Kepada -->
+                <div class="mb-4">
+                    <label for="namaPenerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Dengan hormat
+                        harap :</label>
+                    <select name="dengan_hormat"
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        id="">
+                        <option selected hidden>Pilih</option>
+                        <option value="DITINDAKLANJUTI">DITINDAKLANJUTI</option>
+                        <option value="DIKOORDINASIKAN/DIKONFIRMASIKAN">DIKOORDINASIKAN/DIKONFIRMASIKAN</option>
+                        <option value="DIPROSES LEBIH LANJUT">DIPROSES LEBIH LANJUT
+                        </option>
+                        <option value="DITANGGAPI / SARAN">DITANGGAPI / SARAN</option>
+                        <option value="DIAGENDAKAN">DIAGENDAKAN</option>
+                        <option value="DIWAKILI">DIWAKILI</option>
+                    </select>
                 </div>
                 <!-- Nomor Agenda -->
                 <div class="mb-4">
                     <label for="nomorAgenda" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Nomor
                         Agenda</label>
                     <input type="number" placeholder="Masukkan nomor agenda" id="nomorAgenda" name="nomor_agenda"
-                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none" required>
+                        class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
+                        required>
                 </div>
                 <!-- Kolom Tanggal Penyelesaian -->
                 <div class="mb-4">
-                    <label for="tanggalPenyelesaian" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Tanggal
+                    <label for="tanggalPenyelesaian"
+                        class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Tanggal
                         Penyelesaian</label>
                     <div
                         class="relative border-2 border-gray-400 rounded-md h-9 w-full flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
-                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalPenyelesaian" name="tanggal_penyelesaian"
+                        <input type="date" placeholder="dd/mm/yyyy" id="tanggalPenyelesaian"
+                            name="tanggal_penyelesaian"
                             class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
                     </div>
                 </div>

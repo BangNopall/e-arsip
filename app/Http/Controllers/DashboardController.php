@@ -27,9 +27,15 @@ class DashboardController extends Controller
         // mengambil semua data surat masuk dan surat keluar yang is_rapat bernilai 1 dan di count
         $suratMasukRapat = suratMasuk::where('is_rapat', 1)->count();
         $suratKeluarRapat = suratKeluar::where('is_rapat', 1)->count();
+
+        $dokumenSuratMasuk = DokumenSuratMasuk::all()->count();
+        $dokumenSuratKeluar = dokumenSuratKeluar::all()->count();
+
+        $totaldoc = $dokumenSuratMasuk + $dokumenSuratKeluar;
+
         $totalsuratRapat = $suratMasukRapat + $suratKeluarRapat;
 
-        return view('dashboard', compact('suratMasuk', 'suratKeluar', 'suratRegisterKeluar', 'totalsuratRapat'));
+        return view('dashboard', compact('suratMasuk', 'suratKeluar', 'suratRegisterKeluar', 'totalsuratRapat', 'totaldoc'));
     }
     public function editProfil()
     {
@@ -151,7 +157,7 @@ class DashboardController extends Controller
         // simpan dokumen ke dalam tabel dokumen_surat_masuk
         if ($request->hasFile('dok')) {
             foreach ($request->file('dok') as $file) {
-                $nama_file = $file->getClientOriginalName();
+                $nama_file = time() . '-' . $file->getClientOriginalName();
                 $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratMasuk = new DokumenSuratMasuk();
@@ -206,7 +212,7 @@ class DashboardController extends Controller
                 unlink(public_path() . $dokumen->path);
             }
             foreach ($request->file('dok') as $file) {
-                $nama_file = $file->getClientOriginalName();
+                $nama_file = time() . '-' . $file->getClientOriginalName();
                 $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratMasuk = new DokumenSuratMasuk();
@@ -265,18 +271,6 @@ class DashboardController extends Controller
     }
     public function storeDisposisi(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'nomor_surat' => 'required|numeric',
-        //     'tanggal_surat' => 'required',
-        //     'tanggal_terima' => 'required',
-        //     'asal_surat' => 'required',
-        //     'isi_ringkasan_surat' => 'required',
-        //     'diteruskan_kepada' => 'required',
-        //     'nomor_agenda' => 'required|numeric',
-        //     'tanggal_penyelesaian' => 'required',
-        // ]);
-
-        // mengambil semua request dari form dan memasukkan ke dalam pdf
         $disposisi = $request->all();
 
         // Mencetak data disposisi ke dalam file pdf
@@ -343,7 +337,7 @@ class DashboardController extends Controller
         // simpan foto ke dalam tabel dokumen_surat_masuk
         if ($request->hasFile('dok')) {
             foreach ($request->file('dok') as $file) {
-                $nama_file = $file->getClientOriginalName();
+                $nama_file = time() . '-' . $file->getClientOriginalName();
                 $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratKeluar = new dokumenSuratKeluar();
@@ -396,7 +390,7 @@ class DashboardController extends Controller
                 unlink(public_path() . $dokumen->path);
             }
             foreach ($request->file('dok') as $file) {
-                $nama_file = $file->getClientOriginalName();
+                $nama_file = time() . '-' . $file->getClientOriginalName();
                 $file->move(public_path() . '/dokumen/', $nama_file);
 
                 $dokumenSuratKeluar = new dokumenSuratKeluar();
@@ -616,5 +610,57 @@ class DashboardController extends Controller
 
         $pdf = Pdf::loadView('partials.bukuAgenda.print', compact('datasm', 'datask', 'tanggalAwal', 'tanggalAkhir'));
         return $pdf->download('buku-agenda.pdf');
+    }
+
+    // ROUTE JADWAL RETENSI
+    public function jadwalRetensi(){
+        $years = range(date('Y'), 2000);
+        return view('jadwalretensi', compact('years'));
+    }
+
+    public function hapusJadwalRetensi(Request $request){
+        $validatedData = $request->validate([
+            'tahun' => 'required',
+        ]);
+
+        $tahun = $validatedData['tahun'];
+
+        $suratmasuk = suratMasuk::whereYear('created_at', $tahun)->get();
+        $suratkeluar = suratKeluar::whereYear('created_at', $tahun)->get();
+        $suratregisterkeluar = suratRegisterKeluar::whereYear('created_at', $tahun)->get();
+
+        // jika tahun tidak ditemukan
+        if(count($suratmasuk) == 0 && count($suratkeluar) == 0 && count($suratregisterkeluar) == 0){
+            return redirect()->route('dashboard.jadwal-retensi')->with('error', 'Data berdasarkan tahun ' . $tahun . ' tidak ditemukan');
+        }
+
+        // menghapus dokumen surat masuk
+        foreach($suratmasuk as $sm){
+            $dokumen = DokumenSuratMasuk::where('surat_masuk_id', $sm->id)->get();
+            foreach($dokumen as $d){
+                $d->delete();
+                unlink(public_path() . $d->path);
+            }
+        }
+        // menghapus dokumen surat keluar
+        foreach($suratkeluar as $sk){
+            $dokumen = dokumenSuratKeluar::where('surat_keluar_id', $sk->id)->get();
+            foreach($dokumen as $d){
+                $d->delete();
+                unlink(public_path() . $d->path);
+            }
+        }
+
+        foreach($suratmasuk as $sm){
+            $sm->delete();
+        }
+        foreach($suratkeluar as $sk){
+            $sk->delete();
+        }
+        foreach($suratregisterkeluar as $srk){
+            $srk->delete();
+        }
+
+        return redirect()->route('dashboard.jadwal-retensi')->with('success', 'Data berdasarkan jadwal retensi tahun ' . $tahun . ' berhasil dihapus');
     }
 }

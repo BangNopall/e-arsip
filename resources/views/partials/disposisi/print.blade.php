@@ -114,22 +114,46 @@
             </td>
             <td style="width:284.6pt; border-top-style:solid; border-top-width:0.75pt; border-left-style:solid; border-left-width:0.75pt; border-bottom-style:solid; border-bottom-width:0.75pt; padding-right:5.03pt; padding-left:5.03pt; vertical-align:top">
                 <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
-                    <span style="height:0pt; display:block; position:absolute; z-index:3"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:20.17pt; margin-left:-0.32pt; position:absolute" ></span>Dengan hormat harap :
+                    <span style="height:0pt; display:block; position:absolute; z-index:3">@if ($disposisi['dengan_hormat'] == 'DITINDAKLANJUTI')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="20" alt="" style="margin-top:20.17pt; margin-left:-0.32pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:20.17pt; margin-left:-0.32pt; position:absolute" >
+                    @endif</span>Dengan hormat harap :
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:6pt; line-height:150%; font-size:11pt">
                     DITINDAKLANJUTI
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
-                    <span style="height:0pt; display:block; position:absolute; z-index:5"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:18.17pt; margin-left:-27.17pt; position:absolute" ></span><span style="height:0pt; display:block; position:absolute; z-index:7"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:-0.43pt; margin-left:-27.17pt; position:absolute" ></span>DIKOORDINASIKAN/DIKONFIRMASIKAN
+                    <span style="height:0pt; display:block; position:absolute; z-index:5">@if ($disposisi['dengan_hormat'] == 'DIPROSES LEBIH LANJUT')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="20" alt="" style="margin-top:18.17pt; margin-left:-27.17pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:18.17pt; margin-left:-27.17pt; position:absolute" >
+                    @endif</span><span style="height:0pt; display:block; position:absolute; z-index:7">@if ($disposisi['dengan_hormat'] == 'DIKOORDINASIKAN/DIKONFIRMASIKAN')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="20" alt="" style="margin-top:-0.43pt; margin-left:-27.17pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:-0.43pt; margin-left:-27.17pt; position:absolute" >
+                    @endif</span>DIKOORDINASIKAN/DIKONFIRMASIKAN
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
-                    <span style="height:0pt; display:block; position:absolute; z-index:10"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAnSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaE0wNQGDAwAb2egpqeGA0YAAAAASUVORK5CYII=" width="21" height="21" alt="" style="margin-top:19.27pt; margin-left:-27.17pt; position:absolute" ></span>DIPROSES LEBIH LANJUT
+                    <span style="height:0pt; display:block; position:absolute; z-index:10">@if ($disposisi['dengan_hormat'] == 'DITANGGAPI / SARAN')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="21" alt="" style="margin-top:19.27pt; margin-left:-27.17pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAnSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaE0wNQGDAwAb2egpqeGA0YAAAAASUVORK5CYII=" width="21" height="21" alt="" style="margin-top:19.27pt; margin-left:-27.17pt; position:absolute" >
+                    @endif</span>DIPROSES LEBIH LANJUT
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
-                    <span style="height:0pt; display:block; position:absolute; z-index:11"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:19.12pt; margin-left:-27.17pt; position:absolute" ></span>DITANGGAPI / SARAN
+                    <span style="height:0pt; display:block; position:absolute; z-index:11">@if ($disposisi['dengan_hormat'] == 'DIAGENDAKAN')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="20" alt="" style="margin-top:19.12pt; margin-left:-27.17pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:19.12pt; margin-left:-27.17pt; position:absolute" >
+                    @endif</span>DITANGGAPI / SARAN
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
-                    <span style="height:0pt; display:block; position:absolute; z-index:12"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:18.88pt; margin-left:-27.17pt; position:absolute" ></span>DIAGENDAKAN
+                    <span style="height:0pt; display:block; position:absolute; z-index:12">@if ($disposisi['dengan_hormat'] == 'DIWAKILI')
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA4SURBVDhPY2RgYPgPxFQFYEPZ2dkhPCqAnz9/MjBB2VQFo4ZSH4waSn0waij1waih1Ac0qE4YGACyoQYjNfhm9gAAAABJRU5ErkJggg==" width="21" height="20" alt="" style="margin-top:18.88pt; margin-left:-27.17pt; position:absolute" >
+                    @else
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAUCAYAAABiS3YzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAlSURBVDhPYwCC/zTADP+pCUYNHTV01FBqglFDRw2llaHUxQz/ARUuoKbRaDwRAAAAAElFTkSuQmCC" width="21" height="20" alt="" style="margin-top:18.88pt; margin-left:-27.17pt; position:absolute" >
+                    @endif</span>DIAGENDAKAN
                 </p>
                 <p style="margin-top:0pt; margin-left:26.85pt; margin-bottom:0pt; line-height:150%; font-size:12pt">
                     DIWAKILI

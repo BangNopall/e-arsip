@@ -57,8 +57,9 @@ Route::middleware(['auth'])->group(function () {
     // BukuAgenda
     Route::get('/buku-agenda', [DashboardController::class, 'bukuAgenda'] )->name('dashboard.buku-agenda');
     Route::post('/buku-agenda', [DashboardController::class, 'bukuAgendaCetak'] )->name('dashboard.buku-agenda.cetak');
-    // Route::get('/cetak', [DashboardController::class, 'bukuAgendaCetak'] )->name('dashboard.buku-agenda.cetak');
-    Route::view('/cetak', 'partials.bukuAgenda.print');
+    // JadwalRetensi
+    Route::get('/jadwal-retensi', [DashboardController::class, 'jadwalRetensi'] )->name('dashboard.jadwal-retensi');
+    Route::post('/jadwal-retensi', [DashboardController::class, 'hapusJadwalRetensi'] )->name('dashboard.jadwal-retensi.delete');
 
 
 

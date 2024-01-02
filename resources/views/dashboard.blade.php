@@ -71,10 +71,10 @@
                 <!-- Rectangle for Arsip Dipinjam -->
                 <div
                     class="w-full sm:w-full md:w-full lg:w-48 h-21 border-2 border-blue-500 rounded-md p-4 mb-4 mr-8">
-                    <a href="/surat-register-keluar">
-                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Surat Register</h3>
+                    <a href="/jadwal-retensi">
+                        <h3 class="text-xl font-medium tracking-wide text-stone-900">Jadwal Retensi</h3>
                     </a>
-                    <p class="text-4xl font-medium text-blue-500">{{ $suratRegisterKeluar }}</p>
+                    <p class="text-4xl font-medium text-blue-500">{{ $totaldoc }}</p>
                 </div>
 
                 <!-- Rectangle for Jadwal Retensi -->
