@@ -41,12 +41,6 @@
         <div class="flex flex-col px-4 py-6">
             <div class="container flex items-center justify-between">
                 <h2 class="text-stone-900 font-medium text-xl tracking-wide">Dashboard</h2>
-                <!-- Fitur Pencarian -->
-                <div class="flex items-center sm:flex md:flex lg:hidden xl:hidden 2xl:hidden">
-                    <input type="text" placeholder="Cari berkas"
-                        class="text-base text-gray-500 tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
-                    <i class="material-icons-round text-gray-500 cursor-pointer" style="font-size: 21px;">search</i>
-                </div>
             </div>
 
             <div class="flex flex-col sm:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row mt-4">

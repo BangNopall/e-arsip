@@ -39,7 +39,7 @@
                 <i class="material-icons-round mr-4" style="font-size: 20px">assignment</i>Surat Register Keluar
             </a>
             <a href="/jadwal-retensi"
-                class="{{ Request::is('jadwa-retensi') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center flex py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
+                class="{{ Request::is('jadwal-retensi') ? 'text-blue-500' : 'hover:text-gray-700 text-gray-500' }} items-center flex py-0.5 px-1 text-sm font-medium tracking-wide rounded-md mb-2 transition duration-300 ease-in-out">
                 <i class="material-icons-round mr-4" style="font-size: 20px">assignment</i>Jadwal Retensi
             </a>
             <a href="/buku-agenda"
