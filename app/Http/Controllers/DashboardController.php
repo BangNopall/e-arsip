@@ -41,7 +41,7 @@ class DashboardController extends Controller
     {
         // Mengambil data user jika login
         $user = auth()->user();
-        return view('auth.editProfil', compact('user'));
+        return view('auth.editprofil', compact('user'));
     }
     public function updateProfil(Request $request)
     {
