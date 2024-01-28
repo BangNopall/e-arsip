@@ -69,7 +69,7 @@
                 <div class="mb-4">
                     <label for="nomor_registrasi" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nomor
                         Register</label>
-                    <input type="number" placeholder="Masukkan nomor register" id="nomorRegister" name="nomor_registrasi"
+                    <input type="text" placeholder="Masukkan nomor register" id="nomorRegister" name="nomor_registrasi"
                         value="{{ $suratmasuk->no_registrasi }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nomor_registrasi')

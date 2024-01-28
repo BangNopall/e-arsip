@@ -51,9 +51,9 @@
                 <div class="mb-4">
                     <label for="nomorSurat" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Nomor
                         Surat</label>
-                    <input type="number" placeholder="Masukkan nomor surat" id="nomorSurat" name="nomor_surat"
+                    <input type="text" placeholder="Masukkan nomor surat" id="nomorSurat" name="nomor_surat"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
-                        required>
+                        >
                 </div>
                 <!-- Kolom Tanggal Surat -->
                 <div class="mb-4">
@@ -62,7 +62,7 @@
                     <div
                         class="relative border-2 border-gray-400 rounded-md h-9 w-full flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
                         <input type="date" placeholder="dd/mm/yyyy" id="tanggalSurat" name="tanggal_surat"
-                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
+                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" >
                     </div>
                 </div>
                 <!-- Kolom Tanggal Diterima -->
@@ -72,7 +72,7 @@
                     <div
                         class="relative border-2 border-gray-400 rounded-md h-9 w-full flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
                         <input type="date" placeholder="dd/mm/yyyy" id="tanggalDiterima" name="tanggal_terima"
-                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
+                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" >
                     </div>
                 </div>
                 <!-- Kolom Asal Surat -->
@@ -81,7 +81,7 @@
                         Surat</label>
                     <input type="text" placeholder="Masukkan asal surat" id="asalSurat" name="asal_surat"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
-                        required>
+                        >
                 </div>
 
                 <!-- Kolom Ringkasan Surat -->
@@ -92,7 +92,7 @@
                     <input type="text" placeholder="Masukkan isi ringkasan surat" id="ringkasanSurat"
                         name="isi_ringkasan_surat"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
-                        required>
+                        >
                 </div>
                 <!-- Kolom Diteruskan Kepada -->
                 <div class="mb-4">
@@ -140,9 +140,9 @@
                 <div class="mb-4">
                     <label for="nomorAgenda" class="text-sm font-medium tracking-wide text-stone-900 mb-0.5">Nomor
                         Agenda</label>
-                    <input type="number" placeholder="Masukkan nomor agenda" id="nomorAgenda" name="nomor_agenda"
+                    <input type="text" placeholder="Masukkan nomor agenda" id="nomorAgenda" name="nomor_agenda"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none"
-                        required>
+                        >
                 </div>
                 <!-- Kolom Tanggal Penyelesaian -->
                 <div class="mb-4">
@@ -153,7 +153,7 @@
                         class="relative border-2 border-gray-400 rounded-md h-9 w-full flex items-center transition-all duration-300 ease-in-out hover:border-gray-800 focus-within:border-gray-800">
                         <input type="date" placeholder="dd/mm/yyyy" id="tanggalPenyelesaian"
                             name="tanggal_penyelesaian"
-                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" required>
+                            class="outline-none tracking-wide px-3 text-sm text-gray-500 flex-grow" >
                     </div>
                 </div>
                 <!-- Tombol Simpan dan Disposisi -->

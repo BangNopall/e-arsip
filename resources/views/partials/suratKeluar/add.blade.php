@@ -48,7 +48,7 @@
                 <div class="mb-4">
                     <label for="pengirim" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                         Pengirim</label>
-                    <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim" required
+                    <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nama_pengirim')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -58,7 +58,7 @@
                 <div class="mb-4">
                     <label for="nomorRegister" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nomor
                         Surat</label>
-                    <input type="number" placeholder="Masukkan nomor surat" id="nomorRegister" name="nomor_surat" required
+                    <input type="text" placeholder="Masukkan nomor surat" id="nomorRegister" name="nomor_surat"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nomor_surat')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -82,7 +82,7 @@
                     <label for="namaPenerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                         Penerima</label>
                     <input type="text" placeholder="Masukkan nama penerima" id="namaPenerima" name="nama_penerima"
-                        required
+                    
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nama_penerima')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -92,7 +92,7 @@
                 <!-- Kolom Isi Surat -->
                 <div class="mb-6">
                     <label for="isiSurat" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Isi Surat</label>
-                    <input type="text" placeholder="Masukkan isi surat" id="isiSurat" name="isi_surat" required
+                    <input type="text" placeholder="Masukkan isi surat" id="isiSurat" name="isi_surat"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('isi_surat')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -104,7 +104,7 @@
                         multiple files</label>
                     <input
                         class="relative m-0 block w-full min-w-0 flex-auto cursor-pointer rounded border border-solid border-gray-400 bg-clip-padding px-3 py-[0.32rem] font-normal leading-[2.15] text-stone-900 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none"
-                        id="multiple_files" type="file" name="dok[]" accept=".pdf,.docx,.doc,.ppt,.txt,.pptx,.txt,.xlx,.xlxs" multiple required>
+                        id="multiple_files" type="file" name="dok[]" accept=".pdf,.docx,.doc,.ppt,.txt,.pptx,.txt,.xlx,.xlxs" multiple>
                     <div class="mt-2 text-sm" id="fileNames"></div>
                     @error('dok[]')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -115,7 +115,7 @@
                     <label for="penanggungJawab" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Penanggung
                         Jawab</label>
                     <input type="text" placeholder="Masukkan nama penanggung jawab" id="penanggungJawab"
-                        name="penanggungjawab" required
+                        name="penanggungjawab"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('penanggungjawab')
                         <div class="text-red-500 text-left">{{ $message }}</div>

@@ -118,16 +118,16 @@ class DashboardController extends Controller
     public function storeSuratMasuk(Request $request)
     {
         $validatedData = $request->validate([
-            'perihal' => 'required',
-            'nama_pengirim' => 'required',
-            'nomor_registrasi' => 'required|numeric',
-            'tanggal_surat' => 'required',
-            'tanggal_diterima' => 'required',
-            'lampiran' => 'required|numeric',
-            'alamat_asal' => 'required',
-            'alamat_sekarang' => 'required',
-            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
-            'nama_penerima' => 'required',
+            'perihal' => '',
+            'nama_pengirim' => '',
+            'nomor_registrasi' => '',
+            'tanggal_surat' => '',
+            'tanggal_diterima' => '',
+            'lampiran' => 'numeric',
+            'alamat_asal' => '',
+            'alamat_sekarang' => '',
+            'dok.*' => 'mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
+            'nama_penerima' => '',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -186,16 +186,16 @@ class DashboardController extends Controller
     public function updateSuratMasuk(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'perihal' => 'required',
-            'nama_pengirim' => 'required',
-            'nomor_registrasi' => 'required|numeric',
-            'tanggal_surat' => 'required',
-            'tanggal_diterima' => 'required',
-            'lampiran' => 'required|numeric',
-            'alamat_asal' => 'required',
-            'alamat_sekarang' => 'required',
-            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
-            'nama_penerima' => 'required',
+            'perihal' => '',
+            'nama_pengirim' => '',
+            'nomor_registrasi' => '',
+            'tanggal_surat' => '',
+            'tanggal_diterima' => '',
+            'lampiran' => 'numeric',
+            'alamat_asal' => '',
+            'alamat_sekarang' => '',
+            'dok.*' => 'mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
+            'nama_penerima' => '',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -304,13 +304,13 @@ class DashboardController extends Controller
     public function storeSuratKeluar(Request $request)
     {
         $validatedData = $request->validate([
-            'nomor_surat' => 'required|numeric',
-            'tanggal_surat' => 'required',
-            'nama_pengirim' => 'required',
-            'nama_penerima' => 'required',
-            'isi_surat' => 'required',
-            'penanggungjawab' => 'required',
-            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
+            'nomor_surat' => '',
+            'tanggal_surat' => '',
+            'nama_pengirim' => '',
+            'nama_penerima' => '',
+            'isi_surat' => '',
+            'penanggungjawab' => '',
+            'dok.*' => 'mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -366,13 +366,13 @@ class DashboardController extends Controller
     public function updateSuratKeluar(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nomor_surat' => 'required|numeric',
-            'tanggal_surat' => 'required',
-            'nama_pengirim' => 'required',
-            'nama_penerima' => 'required',
-            'isi_surat' => 'required',
-            'penanggungjawab' => 'required',
-            'dok.*' => 'required|mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
+            'nomor_surat' => '',
+            'tanggal_surat' => '',
+            'nama_pengirim' => '',
+            'nama_penerima' => '',
+            'isi_surat' => '',
+            'penanggungjawab' => '',
+            'dok.*' => 'mimes:pdf,word,docx,doc,xlsx,xls,ppt,pptx,txt',
         ]);
 
         // nama pengirim dan penerima huruf besar
@@ -565,29 +565,36 @@ class DashboardController extends Controller
     // ROUTE BUKU AGENDA
     public function bukuAgenda(Request $request)
     {
-        $search = $request->input('search');
-        $query = suratMasuk::query();
+        $searchsm = $request->input('searchsm');
+        $searchsk = $request->input('searchsk');
+        $querysm = suratMasuk::query();
+        $querysk = suratKeluar::query();
 
-        if ($search) {
+        if ($searchsm) {
             // Menambahkan kondisi pencarian ke query
-            $query->where('perihal', 'like', '%' . $search . '%')
-                ->orWhere('nama_pengirim', 'like', '%' . $search . '%')
-                ->orWhere('no_registrasi', 'like', '%' . $search . '%')
-                ->orWhere('tanggal_surat', 'like', '%' . $search . '%')
-                ->orWhere('tanggal_terima', 'like', '%' . $search . '%')
-                ->orWhere('alamat_asal', 'like', '%' . $search . '%')
-                ->orWhere('alamat_sekarang', 'like', '%' . $search . '%')
-                ->orWhere('nama_penerima', 'like', '%' . $search . '%')
-                // menambahkan kondisi pencarian ke tabel surat keluar
-                ->orWhere('nomor_surat', 'like', '%' . $search . '%')
-                ->orWhere('nama_pengirim', 'like', '%' . $search . '%')
-                ->orWhere('tanggal_surat', 'like', '%' . $search . '%')
-                ->orWhere('nama_penerima', 'like', '%' . $search . '%')
-                ->orWhere('isi_surat', 'like', '%' . $search . '%')
-                ->orWhere('penanggungjawab', 'like', '%' . $search . '%');
+            $querysm->where('perihal', 'like', '%' . $searchsm . '%')
+                ->orWhere('nama_pengirim', 'like', '%' . $searchsm . '%')
+                ->orWhere('no_registrasi', 'like', '%' . $searchsm . '%')
+                ->orWhere('tanggal_surat', 'like', '%' . $searchsm . '%')
+                ->orWhere('tanggal_terima', 'like', '%' . $searchsm . '%')
+                ->orWhere('alamat_asal', 'like', '%' . $searchsm . '%')
+                ->orWhere('alamat_sekarang', 'like', '%' . $searchsm . '%')
+                ->orWhere('nama_penerima', 'like', '%' . $searchsm . '%');
         }
-        $suratmasuk = $query->get();
-        $suratkeluar = suratKeluar::all();
+
+        if ($searchsk) {
+            // Menambahkan kondisi pencarian ke query
+            $querysk->orWhere('nomor_surat', 'like', '%' . $searchsk . '%')
+            ->orWhere('nama_pengirim', 'like', '%' . $searchsk . '%')
+            ->orWhere('tanggal_surat', 'like', '%' . $searchsk . '%')
+            ->orWhere('nama_penerima', 'like', '%' . $searchsk . '%')
+            ->orWhere('isi_surat', 'like', '%' . $searchsk . '%')
+            ->orWhere('penanggungjawab', 'like', '%' . $searchsk . '%');
+        }
+
+        $suratmasuk = $querysm->get();
+
+        $suratkeluar = $querysk->get();
 
         return view('bukuagenda', compact('suratmasuk', 'suratkeluar'));
     }

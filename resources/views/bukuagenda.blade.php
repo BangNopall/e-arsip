@@ -44,7 +44,10 @@
             <div class="flex items-center justify-between mb-4">
                 <!-- Judul Data Surat Keluar -->
                 <h2 class="text-stone-900 font-medium text-xl tracking-wide">Data Buku Agenda</h2>
-
+            </div>
+            <div class="">
+                <!-- Judul Data Surat Keluar -->
+                <h2 class="text-stone-900 font-medium text-xl tracking-wide mb-1">Surat Masuk</h2>
                 <!-- Container untuk Kolom Pencarian -->
                 <div
                     class="flex items-center w-96 h-9 border-2 border-gray-400 rounded-md bg-transparent focus-within:border-gray-800 transition duration-300">
@@ -55,12 +58,11 @@
 
                     <!-- Kolom Pencarian -->
                     <form action="/buku-agenda" method="get">
-                        <input type="text" placeholder="Cari buku agenda" name="search"
+                        <input type="text" placeholder="Cari surat masuk" name="searchsm"
                             class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
                     </form>
                 </div>
             </div>
-
             <!-- Tabel -->
             <div class="overflow-x-auto overflow-y-auto mt-2 max-w-full max-h-96">
                 <table class="min-w-full min-w-max border">
@@ -109,6 +111,42 @@
                                 </tr>
                             @endif
                         @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-5">
+                <!-- Judul Data Surat Keluar -->
+                <h2 class="text-stone-900 font-medium text-xl tracking-wide mb-1">Surat Keluar</h2>
+                <!-- Container untuk Kolom Pencarian -->
+                <div
+                    class="flex items-center w-96 h-9 border-2 border-gray-400 rounded-md bg-transparent focus-within:border-gray-800 transition duration-300">
+                    <!-- Logo Search dari Google Icons Rounded -->
+                    <div class="flex items-center justify-center w-10 h-9">
+                        <i class="material-icons-round text-gray-400 cursor-pointer" style="font-size: 20px;">search</i>
+                    </div>
+
+                    <!-- Kolom Pencarian -->
+                    <form action="/buku-agenda" method="get">
+                        <input type="text" placeholder="Cari surat keluar" name="searchsk"
+                            class="flex-1 text-sm text-gray-800 font-normal tracking-wide placeholder-gray-300 bg-transparent focus:outline-none">
+                    </form>
+                </div>
+            </div>
+            <div class="overflow-x-auto overflow-y-auto mt-2 max-w-full max-h-96">
+                <table class="min-w-full min-w-max border">
+                    <thead class="bg-blue-500 text-white tracking-wide border font-normal">
+                        <tr>
+                            <th class="py-2 px-2 border text-center text-sm">No.</th>
+                            <th class="py-2 px-4 border text-center text-sm">Asal Surat</th>
+                            <th class="py-2 px-4 border text-center text-sm">Tujuan Surat</th>
+                            <th class="py-2 px-4 border text-center text-sm">Jenis Surat</th>
+                            <th class="py-2 px-4 border text-center text-sm">Tanggal Simpan</th>
+                            <th class="py-2 px-4 border text-center text-sm">Tanggal Input</th>
+                            <th class="py-2 px-4 border text-center text-sm">Pratinjau File</th>
+                            <th class="py-2 px-4 border text-center text-sm">Lampiran</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 border text-sm">
                         {{-- menampilkan suratkeluar --}}
                         @foreach ($suratkeluar as $index => $d)
                             @if ($d->is_rapat == 1)

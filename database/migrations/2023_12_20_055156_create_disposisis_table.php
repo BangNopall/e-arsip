@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('disposisis', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_surat');
-            $table->date('tanggal_surat');
-            $table->date('tanggal_terima');
-            $table->string('asal_surat');
-            $table->string('isi_ringkasan_surat');
-            $table->string('diteruskan_kepada');
-            $table->string('nomor_agenda');
-            $table->date('tanggal_penyelesaian');
+            $table->string('nomor_surat')->nullable();
+            $table->date('tanggal_surat')->nullable();
+            $table->date('tanggal_terima')->nullable();
+            $table->string('asal_surat')->nullable();
+            $table->string('isi_ringkasan_surat')->nullable();
+            $table->string('diteruskan_kepada')->nullable();
+            $table->string('nomor_agenda')->nullable();
+            $table->date('tanggal_penyelesaian')->nullable();
             $table->timestamps();
         });
     }

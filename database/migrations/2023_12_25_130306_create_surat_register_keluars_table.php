@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('surat_register_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_lengkap');
-            $table->string('nik');
-            $table->string('tanggal_lahir');
-            $table->string('status');
-            $table->string('jenis_kelamin');
-            $table->string('pekerjaan');
-            $table->string('alamat_asal');
-            $table->string('alamat_pindah');
-            $table->string('tanggal_surat');
-            $table->string('keterangan');
-            $table->string('penanggung_jawab');
+            $table->string('nama_lengkap')->nullable();
+            $table->string('nik')->nullable();
+            $table->string('tanggal_lahir')->nullable();
+            $table->string('status')->nullable();
+            $table->string('jenis_kelamin')->nullable();
+            $table->string('pekerjaan')->nullable();
+            $table->string('alamat_asal')->nullable();
+            $table->string('alamat_pindah')->nullable();
+            $table->string('tanggal_surat')->nullable();
+            $table->string('keterangan')->nullable();
+            $table->string('penanggung_jawab')->nullable();
             $table->timestamps();
         });
     }

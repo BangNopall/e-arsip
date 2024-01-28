@@ -48,7 +48,7 @@
                 <div class="mb-4">
                     <label for="pengirim" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                         Pengirim</label>
-                    <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim" required value="{{ $suratkeluar->nama_pengirim }}"
+                    <input type="text" placeholder="Masukkan nama pengirim" id="pengirim" name="nama_pengirim" value="{{ $suratkeluar->nama_pengirim }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nama_pengirim')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -58,7 +58,7 @@
                 <div class="mb-4">
                     <label for="nomorRegister" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nomor
                         Surat</label>
-                    <input type="number" placeholder="Masukkan nomor surat" id="nomorRegister" name="nomor_surat" required value="{{ $suratkeluar->nomor_surat }}"
+                    <input type="text" placeholder="Masukkan nomor surat" id="nomorRegister" name="nomor_surat" value="{{ $suratkeluar->nomor_surat }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nomor_surat')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -82,7 +82,7 @@
                     <label for="namaPenerima" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Nama
                         Penerima</label>
                     <input type="text" placeholder="Masukkan nama penerima" id="namaPenerima" name="nama_penerima"
-                        required value="{{ $suratkeluar->nama_penerima }}"
+                     value="{{ $suratkeluar->nama_penerima }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('nama_penerima')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -92,7 +92,7 @@
                 <!-- Kolom Isi Surat -->
                 <div class="mb-6">
                     <label for="isiSurat" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Isi Surat</label>
-                    <input type="text" placeholder="Masukkan isi surat" id="isiSurat" name="isi_surat" required value="{{ $suratkeluar->isi_surat }}"
+                    <input type="text" placeholder="Masukkan isi surat" id="isiSurat" name="isi_surat" value="{{ $suratkeluar->isi_surat }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('isi_surat')
                         <div class="text-red-500 text-left">{{ $message }}</div>
@@ -124,7 +124,7 @@
                     <label for="penanggungJawab" class="text-stone-900 text-sm font-medium tracking-wide mb-0.5">Penanggung
                         Jawab</label>
                     <input type="text" placeholder="Masukkan nama penanggung jawab" id="penanggungJawab"
-                        name="penanggungjawab" required value="{{ $suratkeluar->penanggungjawab }}"
+                        name="penanggungjawab" value="{{ $suratkeluar->penanggungjawab }}"
                         class="w-full h-9 border-2 border-gray-400 rounded-md px-3 text-sm text-stone-900 font-normal tracking-wide transition focus:border-gray-800 hover:border-gray-800 focus:outline-none">
                     @error('penanggungjawab')
                         <div class="text-red-500 text-left">{{ $message }}</div>

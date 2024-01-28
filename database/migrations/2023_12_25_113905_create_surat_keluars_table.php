@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('surat_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_surat');
-            $table->string('nama_pengirim');
-            $table->date('tanggal_surat');
-            $table->string('nama_penerima');
-            $table->string('isi_surat');
-            $table->string('penanggungjawab');
+            $table->string('nomor_surat')->nullable();
+            $table->string('nama_pengirim')->nullable();
+            $table->date('tanggal_surat')->nullable();
+            $table->string('nama_penerima')->nullable();
+            $table->string('isi_surat')->nullable();
+            $table->string('penanggungjawab')->nullable();
             $table->bigInteger('is_rapat')->default(0);
             $table->timestamps();
         });

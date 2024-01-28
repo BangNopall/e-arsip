@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('dokumen_surat_keluars', function (Blueprint $table) {
             $table->id();
-            $table->string('surat_keluar_id');
-            $table->string('nama_file');
-            $table->string('path');
+            $table->string('surat_keluar_id')->nullable();
+            $table->string('nama_file')->nullable();
+            $table->string('path')->nullable();
             $table->timestamps();
         });
     }
