@@ -5,17 +5,12 @@
         <div class="mb-6">
             <img class="mx-auto mt-2 mb-1 w-32 h-auto" src="{{ asset('images/Arsipintar.png') }}" alt="Logo">
         </div>
-
-        <!-- Photo Profile -->
-        @if (Auth::user()->foto != null)
-            <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="{{ asset(Auth::user()->foto) }}"
-                alt="Profile Image">
-        @else
-            <img class="w-32 h-32 rounded-full border-4 border-blue-500 p-1" src="{{ asset('images/FotoProfil.jpg') }}"
-                alt="Profile Image">
-        @endif
+        
+        <div class="mb-2">
+            <img class="mx-auto w-32 h-auto" src="{{ asset('images/KabupatenMalang.png') }}" alt="Logo">
+        </div>
         <!-- Nama Pengguna -->
-        <div class="text-stone-900 text-lg text-center font-medium font-Poppins tracking-wide mt-1">
+        <div class="text-stone-900 text-lg text-center font-medium font-Poppins tracking-wide mt-0.5">
             {{ Auth::user()->name }}</div>
         <!-- Nama Jabatan -->
         <div class="text-gray-500 text-sm font-normal text-center font-Poppins tracking-wide leading-3">{{ Auth::user()->jabatan }}</div>
