@@ -9,18 +9,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.0.0/flowbite.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ asset('images/Logo_Kabupaten_Malang_-_Seal_of_Malang_Regency.svg') }}"
         type="image/x-icon">
-    <title>Sip Arsip - Login</title>
+    <title>Arsipintar - Login</title>
     @vite('resources/css/app.css')
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen items-center justify-center font-Poppins p-3">
     <div class="bg-gray-50 rounded-lg border-2 border-blue-500 mt-2 p-3 md:p-5 text-center font-Poppins">
         <!-- Logo -->
-        <img class="mx-auto mb-1 w-20 h-auto"
-            src="{{ asset('images/Logo_Kabupaten_Malang_-_Seal_of_Malang_Regency.svg') }}" alt="Logo">
+        <img class="mx-auto mt-4 mb-5 w-32 h-auto"
+            src="{{ asset('images/Arsipintar.png') }}" alt="Logo">
 
         <!-- Selamat Datang -->
-        <div class="text-stone-900 text-lg font-medium">Selamat Datang di Aplikasi Sip Arsip</div>
+        <div class="text-stone-900 text-lg font-medium">Selamat Datang di Aplikasi Arsipintar</div>
 
         <!-- Silakan masukkan username dan password -->
         <div class="text-gray-500 text-sm font-normal mb-3 tracking-wide leading-4">
@@ -121,7 +121,7 @@
 
     <!-- Footer -->
     <footer class="pt-6 mb-1 text-center">
-        <p class="text-sm text-stone-900">&copy; 2023 Sip Arsip. All rights reserved.</p>
+        <p class="text-sm text-stone-900">&copy; 2024 Arsipintar. All rights reserved.</p>
     </footer>
     <script src="{{ asset('js/login.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>

@@ -10,17 +10,17 @@
     <link rel="shortcut icon" href="{{ asset('images/Logo_Kabupaten_Malang_-_Seal_of_Malang_Regency.svg') }}"
         type="image/x-icon">
     @vite('resources/css/app.css')
-    <title>Sip Arsip - Pendaftaran Akun</title>
+    <title>Arsipintar - Pendaftaran Akun</title>
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen items-center justify-center font-Poppins">
     <div class="bg-gray-50 rounded-lg border-2 border-blue-500 mt-2 pb-7 pt-6 px-5 text-center font-Poppins">
         <!-- Logo -->
-        <img class="mx-auto mb-1 w-20 h-auto"
-            src="{{ asset('images/Logo_Kabupaten_Malang_-_Seal_of_Malang_Regency.svg') }}" alt="Logo">
+        <img class="mx-auto mt-2 mb-4 w-32 h-auto"
+            src="{{ asset('images/Arsipintar.png') }}" alt="Logo">
 
         <!-- Selamat Datang -->
-        <div class="text-stone-900 text-lg font-medium">Selamat Datang di Aplikasi Sip Arsip</div>
+        <div class="text-stone-900 text-lg font-medium">Selamat Datang di Aplikasi Arsipintar</div>
 
         <!-- Silakan masukkan informasi pendaftaran -->
         <div class="text-gray-500 text-sm font-normal mb-7 tracking-wide leading-4">Silakan masukkan informasi
@@ -153,7 +153,7 @@
 
     <!-- Footer -->
     <footer class="pt-6 mb-4 text-center">
-        <p class="text-sm text-stone-900">&copy; 2023 Sip Arsip. All rights reserved.</p>
+        <p class="text-sm text-stone-900">&copy; 2024 Arsipintar. All rights reserved.</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 </body>

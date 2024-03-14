@@ -86,7 +86,7 @@
 
         <!-- Footer -->
         <footer class="text-stone-900 text-sm text-left ml-4 mb-5 mt-auto w-full bg-gray-50">
-            &copy; 2023 Sip Arsip. All rights reserved.
+            &copy; 2024 Arsipintar. All rights reserved.
         </footer>
     </div>
     <script src="{{ asset('js/dashboard.js') }}"></script>
