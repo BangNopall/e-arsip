@@ -61,7 +61,7 @@ Arsipintar © 2023 by Muhammad Naufal is licensed under Creative Commons Attribu
 
 Naufal - [LinkedIn](https://www.linkedin.com/in/muhammad-naufal-mathara-rahman/) - noxvalproject@gmail.com
 
-Project Link: [https://github.com/BangNopall/coba-laravel/](https://github.com/BangNopall/coba-laravel/)
+Project Link: [https://github.com/BangNopall/e-arsip/](https://github.com/BangNopall/e-arsip/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
